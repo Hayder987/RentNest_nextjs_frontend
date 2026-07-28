@@ -66,9 +66,7 @@ const RegisterForm = () => {
               {/* Header */}
 
               <div className="space-y-2 text-center">
-                <h1 className="text-2xl font-bold">
-                  Create your account
-                </h1>
+                <h1 className="text-2xl font-bold">Create your account</h1>
 
                 <p className="text-sm text-muted-foreground">
                   Join RentNest and start your journey
@@ -112,9 +110,7 @@ const RegisterForm = () => {
                     <>
                       <Spinner data-icon="inline-start" />
 
-                      {uploading
-                        ? "Uploading Image..."
-                        : "Creating Account..."}
+                      {uploading ? "Uploading Image..." : "Creating Account..."}
                     </>
                   ) : (
                     "Create Account"
@@ -122,9 +118,7 @@ const RegisterForm = () => {
                 </Button>
               </Field>
 
-              <FieldSeparator>
-                Already have an account?
-              </FieldSeparator>
+              <FieldSeparator>Already have an account?</FieldSeparator>
 
               <FieldDescription className="text-center">
                 <Link
@@ -143,17 +137,11 @@ const RegisterForm = () => {
 
       <FieldDescription className="text-center text-xs text-muted-foreground">
         By creating an account, you agree to our{" "}
-        <Link
-          href="/terms"
-          className="text-primary hover:underline"
-        >
+        <Link href="/terms" className="text-primary hover:underline">
           Terms of Service
         </Link>{" "}
         and{" "}
-        <Link
-          href="/privacy"
-          className="text-primary hover:underline"
-        >
+        <Link href="/privacy" className="text-primary hover:underline">
           Privacy Policy
         </Link>
         .
