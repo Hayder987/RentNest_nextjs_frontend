@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 
 
-export default function HomePage() {
+export default function Home() {
   return (
     <div className="">
     welcome home
