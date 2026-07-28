@@ -2,7 +2,7 @@
 
 const ContactPage = () => {
   return (
-    <div>ContactPage</div>
+    <div className="max-w-400 mx-auto px-4 w-full">ContactPage</div>
   )
 }
 

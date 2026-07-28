@@ -2,7 +2,7 @@
 
 const AboutPage = () => {
   return (
-    <div>AboutPage</div>
+    <div className="max-w-400 mx-auto px-4 w-full">AboutPage</div>
   )
 }
 
