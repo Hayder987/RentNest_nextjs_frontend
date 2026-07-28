@@ -103,7 +103,7 @@ const RegisterForm = () => {
               <Field>
                 <Button
                   type="submit"
-                  className="w-full"
+                  className="w-full text-lg py-4"
                   disabled={pending || uploading}
                 >
                   {pending || uploading ? (
