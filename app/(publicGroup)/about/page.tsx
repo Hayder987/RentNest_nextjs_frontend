@@ -1,9 +1,11 @@
-
+import ContainerLg from "@/components/shared/Container/ContainerLg";
 
 const AboutPage = () => {
   return (
-    <div className="max-w-400 mx-auto px-4 w-full">AboutPage</div>
-  )
-}
+    <ContainerLg>
+      <div className="max-w-400 mx-auto px-4 w-full">AboutPage</div>
+    </ContainerLg>
+  );
+};
 
-export default AboutPage
+export default AboutPage;
