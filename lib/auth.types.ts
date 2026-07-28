@@ -26,3 +26,22 @@ export interface RegisterState {
   data?: IUser;
   error?: string[] | ValidationError[];
 }
+
+// login state
+
+export interface LoginData {
+  accessToken: string;
+  refreshToken: string;
+  user: IUser;
+}
+
+
+export interface LoginState {
+  success: boolean;
+  statusCode?: number;
+  message: string;
+
+  data?: LoginData;
+
+  error?: string[] | ValidationError[];
+}

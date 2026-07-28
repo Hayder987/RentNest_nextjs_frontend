@@ -1,26 +1,20 @@
 "use server";
 
-import { RegisterState, ValidationError } from "@/lib/auth.types";
-import { registerSchema } from "@/lib/validation/auth.validation";
-import { redirect } from "next/navigation";
+import { LoginState, ValidationError } from "@/lib/auth.types";
+import { loginSchema } from "@/lib/validation/auth.validation";
+import { cookies } from "next/headers";
 
-export async function registerUserAction(
-  prevState: RegisterState,
+export async function LoginUserAction(
+  prevState: LoginState,
   formData: FormData,
-): Promise<RegisterState> {
-
-  
+): Promise<LoginState> {
   const payload = {
-    name: String(formData.get("name") ?? ""),
     email: String(formData.get("email") ?? ""),
     password: String(formData.get("password") ?? ""),
-    role: String(formData.get("role") ?? ""),
-    profilePhoto: String(formData.get("profilePhoto") ?? ""),
   };
 
   // Frontend Zod Validation
-  const validated = registerSchema.safeParse(payload);
-
+  const validated = loginSchema.safeParse(payload);
 
   if (!validated.success) {
     const errors: ValidationError[] = validated.error.issues.map((issue) => ({
@@ -36,13 +30,12 @@ export async function registerUserAction(
     };
   }
 
-  const res = await fetch(`${process.env.BACKEND_API_URL}/api/auth/register`, {
+  const res = await fetch(`${process.env.BACKEND_API_URL}/api/auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(validated.data),
-    cache: "no-store",
   });
 
   const result = await res.json();
@@ -50,14 +43,24 @@ export async function registerUserAction(
   if (!res.ok) {
     return {
       success: false,
-      message: result.message || "Registration failed",
+      message: result.message || "Login failed",
     };
   }
 
   if (result.success) {
-    redirect(
-      `/login?email=${encodeURIComponent(String(result.data?.email))}`,
-    );
+    const cookieStore = await cookies();
+
+    cookieStore.set("accessToken", result.data?.accessToken, {
+      httpOnly: true,
+      maxAge: 60 * 60 * 24 * 3,
+      sameSite: "lax",
+    });
+
+    cookieStore.set("refreshToken", result.data?.refreshToken, {
+      httpOnly: true,
+      maxAge: 60 * 60 * 24 * 15,
+      sameSite: "lax",
+    });
   }
 
   return {

@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+// register payload schema
 export const registerSchema = z.object({
   name: z
     .string()
@@ -26,3 +27,18 @@ export const registerSchema = z.object({
 });
 
 export type RegisterInput = z.infer<typeof registerSchema>;
+
+
+// login payload schema
+export const loginSchema = z.object({
+  email: z
+    .string()
+    .email("Please enter a valid email address"),
+
+  password: z
+    .string()
+    .min(6, "Password must be at least 6 characters"),
+});
+
+
+export type LoginInput = z.infer<typeof loginSchema>;

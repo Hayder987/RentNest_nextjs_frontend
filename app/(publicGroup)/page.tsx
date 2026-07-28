@@ -2,6 +2,7 @@ import ContainerLg from "@/components/shared/Container/ContainerLg";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
+ 
   return (
     <section className="">
       {/* here hero banner full wide*/}
