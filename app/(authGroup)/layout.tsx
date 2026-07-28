@@ -7,7 +7,7 @@ const AuthLayout =async ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-full flex flex-col">
       <NavBar/>
-      <ContainerLg className="mt-20 min-h-[calc(100vh-120px)] ">
+      <ContainerLg className="mt-20 min-h-[calc(100vh-120px)] py-6 md:py-12">
         {children}
       </ContainerLg>
       <Footer/>

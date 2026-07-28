@@ -11,12 +11,15 @@ export async function registerUserAction(
   prevState: RegisterState,
   formData: FormData,
 ): Promise<RegisterState> {
-  const payload = {
-    name: String(formData.get("name") ?? ""),
-    email: String(formData.get("email") ?? ""),
-    password: String(formData.get("password") ?? ""),
-    profilePhoto: String(formData.get("profilePhoto") ?? ""),
-  };
+
+  
+ const payload = {
+  name: String(formData.get("name") ?? ""),
+  email: String(formData.get("email") ?? ""),
+  password: String(formData.get("password") ?? ""),
+  role: String(formData.get("role") ?? ""),
+  profilePhoto: String(formData.get("profilePhoto") ?? ""),
+};
 
   // Frontend Zod Validation
   const validated = registerSchema.safeParse(payload);
