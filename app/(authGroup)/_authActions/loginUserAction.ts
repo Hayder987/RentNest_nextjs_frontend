@@ -3,6 +3,7 @@
 import { LoginState, ValidationError } from "@/lib/auth.types";
 import { loginSchema } from "@/lib/validation/auth.validation";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export async function LoginUserAction(
   prevState: LoginState,
@@ -62,7 +63,18 @@ export async function LoginUserAction(
       sameSite: "lax",
     });
   }
-
+  
+  // after login redirect role base dashboard route
+  if(result?.data?.user.role === "TENANT"){
+    redirect("/tenant-dashboard")
+  }
+  else if(result?.data?.user.role === "LANDLORD"){
+    redirect("/landlord-dashboard")
+  }
+  else if(result?.data?.user.role === "ADMIN"){
+    redirect("/admin-dashboard")
+  }
+  
   return {
     success: result.success,
     statusCode: result.statusCode,

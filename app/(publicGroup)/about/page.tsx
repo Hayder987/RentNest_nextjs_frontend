@@ -1,4 +1,4 @@
-import AboutPageComponents from "@/components/aboutUS/AboutUs";
+import AboutPageComponents from "@/components/publicComponents/AboutUs";
 import ContainerLg from "@/components/shared/Container/ContainerLg";
 
 const AboutPage = () => {

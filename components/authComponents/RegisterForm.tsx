@@ -58,7 +58,7 @@ const RegisterForm = () => {
       : "";
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex max-w-7xl mx-auto flex-col gap-6">
       <Card className="overflow-hidden p-0">
         <CardContent className="grid p-0 md:grid-cols-2">
           <form action={action} className="p-6 md:p-8">
