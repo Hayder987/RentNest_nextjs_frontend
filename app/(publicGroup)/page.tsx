@@ -1,5 +1,5 @@
+import HeroSection from "@/components/publicComponents/HomeBanner";
 import ContainerLg from "@/components/shared/Container/ContainerLg";
-import { Button } from "@/components/ui/button";
 
 export default function Home() {
  
@@ -7,7 +7,7 @@ export default function Home() {
     <section className="">
       {/* here hero banner full wide*/}
       <div className="">
-        <p className="text-xl">hero banner</p>
+        <HeroSection/>
       </div>
 
       {/* main content without hero */}
