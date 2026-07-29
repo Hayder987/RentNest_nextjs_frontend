@@ -1,3 +1,4 @@
+import ExploreSection from "@/components/publicComponents/ExploreSection";
 import HeroSection from "@/components/publicComponents/HomeBanner";
 import ContainerLg from "@/components/shared/Container/ContainerLg";
 
@@ -10,12 +11,8 @@ export default function Home() {
         <HeroSection/>
       </div>
 
-      {/* main content without hero */}
-      <ContainerLg>
-        <main className="max-w-400 mx-auto px-4 w-full">
-          content
-        </main>
-      </ContainerLg>
+      <ExploreSection/>
+      
     </section>
   );
 }

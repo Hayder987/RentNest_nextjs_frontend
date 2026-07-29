@@ -1,3 +1,4 @@
+
 import { IUser } from "./auth.types";
 
 export interface MobileMenuProps {
@@ -12,4 +13,12 @@ export interface MobileMenuProps {
     icon: React.ElementType;
     action?: string;
   }[];
+};
+
+
+export interface IUserProfileResponse {
+  success: boolean;
+  statusCode: number;
+  message: string;
+  data: IUser;
 }

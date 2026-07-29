@@ -17,7 +17,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { IUser } from "@/lib/auth.types";
+import { IUserProfileResponse } from "@/lib/common.type";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -47,19 +47,14 @@ const userMenuItems = [
   },
 ];
 
-const NavBar = () => {
 
+export interface NavbarProps {
+  userData: IUserProfileResponse ;
+}
 
-  const user: IUser | null = {
-    id: "3a6f406e-fb78-43a2-aad3-6888ffde1f59",
-    name: "admin",
-    email: "admin@gmail.com",
-    role: "ADMIN",
-    status: "ACTIVE",
-    profilePhoto: "https://i.ibb.co/hJ3F7YRX/images.jpg",
-    createdAt: "",
-    updatedAt: "",
-  };
+const NavBar = ( { userData }: NavbarProps) => {
+
+  const user = userData?.data;
 
   return (
     <nav className="fixed top-0 z-50 w-full border-b bg-white shadow-sm">
@@ -94,15 +89,15 @@ const NavBar = () => {
             ))}
           </ul>
 
-          {user ? (
+          {userData?.success && user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className="rounded-full outline-none ring-offset-2 transition focus-visible:ring-2 focus-visible:ring-primary">
                   <Avatar className="h-10 w-10 cursor-pointer">
-                    <AvatarImage src={user.profilePhoto} alt={user.name} />
+                    <AvatarImage src={user?.profilePhoto} alt={user?.name} />
 
                     <AvatarFallback>
-                      {user.name.charAt(0).toUpperCase()}
+                      {user?.name.charAt(0).toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
                 </button>
@@ -110,12 +105,12 @@ const NavBar = () => {
 
               <DropdownMenuContent align="end" className="w-60">
                 <DropdownMenuLabel>
-                  <p className="font-semibold">{user.name}</p>
+                  <p className="font-semibold">{user?.name}</p>
 
                   <p className="text-xs text-muted-foreground">{user.email}</p>
 
                   <p className="mt-1 text-xs font-medium text-primary">
-                    {user.role}
+                    {user?.role}
                   </p>
                 </DropdownMenuLabel>
 
