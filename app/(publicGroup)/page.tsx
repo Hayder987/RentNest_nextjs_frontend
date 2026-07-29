@@ -7,10 +7,10 @@ export default async function Home({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const query = await searchParams;
-  const data = await getAllProperties({query})
+  // const query = await searchParams;
+  // const data = await getAllProperties({query})
 
-  console.log(data)
+  // console.log(data)
  
   return (
     <section className="">

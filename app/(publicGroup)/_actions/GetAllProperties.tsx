@@ -10,19 +10,17 @@ export const getAllProperties = async ({
   const params = createSearchParams({ query });
 
   const res = await fetch(
-    `${process.env.BACKEND_API_URL}/api/properties/public?${params.toString()}`,
+    `${process.env.BACKEND_API_URL}/api/properties?${params.toString()}`,
     {
       cache: "no-cache",
       next: {
-        revalidate: 60 * 60 * 5,
+        revalidate: 60 * 60 * 2,
         tags: ["all-properties"],
       },
     },
   );
 
   const result = await res.json();
-
-  console.log(result)
 
   return result;
 };
