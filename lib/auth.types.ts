@@ -8,7 +8,7 @@ export interface IUser {
   email: string;
   role: UserRole;
   status: UserStatus;
-  profilePhoto: string | null;
+  profilePhoto: string ;
   createdAt: string;
   updatedAt: string;
 }
