@@ -1,8 +1,16 @@
 import ExploreSection from "@/components/publicComponents/ExploreSection";
 import HeroSection from "@/components/publicComponents/HomeBanner";
-import ContainerLg from "@/components/shared/Container/ContainerLg";
+import { getAllProperties } from "./_actions/GetAllProperties";
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const query = await searchParams;
+  const data = await getAllProperties({query})
+
+  console.log(data)
  
   return (
     <section className="">
