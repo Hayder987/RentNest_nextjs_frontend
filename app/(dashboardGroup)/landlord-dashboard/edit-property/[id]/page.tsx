@@ -1,8 +1,7 @@
-import { getAllCategoryPublic } from "@/app/(publicGroup)/_actions/getAllCategory";
-import { getPropertyById } from "@/app/(publicGroup)/_actions/getPropertyById";
-import EditPropertyForm from "@/components/dashBoardComponents/EditPropertyForm";
-import { notFound } from "next/navigation";
 
+import DashBoardFromSkeleton from "@/components/dashBoardComponents/DashBoardFromSkeleton";
+import EditPropertyFromData from "@/components/dashBoardComponents/EditPropertyFromData";
+import { Suspense } from "react";
 
 interface PageProps {
   params: Promise<{
@@ -10,24 +9,14 @@ interface PageProps {
   }>;
 }
 
-export default async function EditPropertyPage({
-  params,
-}: PageProps) {
+export default async function EditPropertyPage({ params }: PageProps) {
   const { id } = await params;
 
-  const res = await getPropertyById(id);
-  const categories = await getAllCategoryPublic();
-
-  if (!res.success) {
-    notFound();
-  }
-
   return (
-    <div className="container py-8">
-      <EditPropertyForm
-        property={res?.data}
-        categories={categories}
-      />
+    <div className="">
+      <Suspense fallback={<DashBoardFromSkeleton />}>
+        <EditPropertyFromData id={id} />
+      </Suspense>
     </div>
   );
 }

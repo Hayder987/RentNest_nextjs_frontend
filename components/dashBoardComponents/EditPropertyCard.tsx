@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Calendar, Edit, MapPin, Star, Trash2 } from "lucide-react";
+import { Calendar, Edit, MapPin, Star, } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 

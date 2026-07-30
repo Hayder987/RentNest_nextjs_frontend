@@ -19,7 +19,6 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { addPropertySchema } from "@/lib/validation/property.validtion";
-import { addPropertyAction } from "@/app/(dashboardGroup)/_actions/LandLordActions/addPropertyAction";
 import { toast } from "sonner";
 import { CategoriesResponse, IPropertyDetails } from "@/lib/properties.type";
 import { updatePropertyAction } from "@/app/(dashboardGroup)/_actions/LandLordActions/updatePropertyActions";
