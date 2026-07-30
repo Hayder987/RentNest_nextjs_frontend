@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/card";
 import { IMyProperty } from "@/lib/dashboard.type";
 import { CategoriesResponse } from "@/lib/properties.type";
+import DeletePropertyButton from "./DeletePropertyButton";
 
 interface Props {
   property: IMyProperty;
@@ -39,26 +40,26 @@ export default function EditPropertyCard({
       <div className="relative">
 
         <Image
-          src={property.image}
-          alt={property.title}
+          src={property?.image}
+          alt={property?.title}
           width={700}
           height={500}
           className="h-56 w-full object-cover"
         />
 
         <Badge className="absolute left-4 top-4">
-          {property.category.name}
+          {property?.category.name}
         </Badge>
 
         <Badge
           variant={
-            property.available
+            property?.available
               ? "default"
               : "destructive"
           }
           className="absolute right-4 top-4"
         >
-          {property.available
+          {property?.available
             ? "Available"
             : "Unavailable"}
         </Badge>
@@ -70,21 +71,21 @@ export default function EditPropertyCard({
         <div>
 
           <h2 className="line-clamp-1 text-xl font-semibold">
-            {property.title}
+            {property?.title}
           </h2>
 
           <div className="mt-2 flex items-center gap-2 text-muted-foreground">
 
             <MapPin className="h-4 w-4 text-primary" />
 
-            <span>{property.location}</span>
+            <span>{property?.location}</span>
 
           </div>
 
         </div>
 
         <p className="line-clamp-2 text-sm text-muted-foreground">
-          {property.description}
+          {property?.description}
         </p>
 
         <div className="grid grid-cols-2 gap-3 text-sm">
@@ -96,7 +97,7 @@ export default function EditPropertyCard({
             </p>
 
             <p className="font-semibold text-primary">
-              ৳ {property.price.toLocaleString()}
+              ৳ {property?.price.toLocaleString()}
             </p>
 
           </div>
@@ -111,7 +112,7 @@ export default function EditPropertyCard({
 
               <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
 
-              {property._count.reviews}
+              {property?._count.reviews}
 
             </div>
 
@@ -126,7 +127,7 @@ export default function EditPropertyCard({
             Rentals
 
             <span className="ml-2 font-semibold">
-              {property._count.rentals}
+              {property?._count.rentals}
             </span>
 
           </div>
@@ -136,7 +137,7 @@ export default function EditPropertyCard({
             <Calendar className="h-4 w-4" />
 
             {new Date(
-              property.createdAt
+              property?.createdAt
             ).toLocaleDateString()}
 
           </div>
@@ -160,17 +161,18 @@ export default function EditPropertyCard({
           </Link>
         </Button>
 
-        <Button
+        {/* <Button
           variant="destructive"
           onClick={() => {}}
         >
           <Trash2 className="mr-2 h-4 w-4" />
 
           Delete
-        </Button>
+        </Button> */}
+        <DeletePropertyButton id={property?.id}/>
 
       </CardFooter>
 
     </Card>
   );
-}
+};

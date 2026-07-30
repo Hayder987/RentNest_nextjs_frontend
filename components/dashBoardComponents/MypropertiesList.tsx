@@ -3,10 +3,15 @@ import { getAllCategoryPublic } from "@/app/(publicGroup)/_actions/getAllCategor
 import EditPropertyCard from "./EditPropertyCard";
 import { IMyProperty } from "@/lib/dashboard.type";
 import { Badge } from "../ui/badge";
+import PropertiesNotFound from "../shared/Properties/PropertiesNotFound";
 
 const MyPropertiesList = async () => {
   const properties = await getMyProperties();
   const categoryData = await getAllCategoryPublic();
+
+  if(!properties.success && !properties.length){
+    return <PropertiesNotFound/>
+  }
 
   return (
     <div className="px-1 md:px-3">

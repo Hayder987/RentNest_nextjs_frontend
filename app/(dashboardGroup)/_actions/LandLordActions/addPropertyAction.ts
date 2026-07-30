@@ -44,6 +44,10 @@ export async function addPropertyAction(payload: AddPropertyPayload) {
     revalidateTag("all-properties", {
       expire: 0,
     });
+
+    revalidateTag("my-properties", {
+      expire: 0,
+    });
   }
 
   return {

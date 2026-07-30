@@ -10,7 +10,7 @@ export const addPropertySchema = z.object({
   description: z
     .string()
     .trim()
-    .min(20, "Description must be at least 20 characters"),
+    .min(5, "Description must be at least 5 characters"),
 
   location: z
     .string()
