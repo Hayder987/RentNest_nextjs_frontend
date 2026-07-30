@@ -50,21 +50,30 @@ const userMenuItems = [
   },
 ];
 
-
-
-
-const NavBar = ( { userData }: NavbarProps) => {
+const NavBar = ({ userData }: NavbarProps) => {
   const router = useRouter();
 
   const user = userData?.data;
 
-   const handleLogout = async(action:string) =>{
+  const handleUserActions = async (action: string) => {
+    if (action === "dashboard") {
+      if (user?.role === "TENANT") {
+        router.push("/tenant-dashboard");
+      } else if (user?.role === "LANDLORD") {
+        router.push("/landlord-dashboard");
+      } else if (user?.role === "ADMIN") {
+        router.push("/admin-dashboard");
+      }
+
+      return;
+    }
+
     if (action === "logout") {
       await logout();
       toast.info("User Logout SuccessFully ");
       router.push("/login");
     }
-  }
+  };
 
   return (
     <nav className="fixed top-0 z-50 w-full border-b bg-white shadow-sm">
@@ -85,7 +94,8 @@ const NavBar = ( { userData }: NavbarProps) => {
             navLinks={navLinks}
             userMenuItems={userMenuItems}
           />
-
+          
+          {/* nav links */}
           <ul className="hidden items-center gap-8 text-sm font-medium text-gray-600 md:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -98,7 +108,7 @@ const NavBar = ( { userData }: NavbarProps) => {
               </li>
             ))}
           </ul>
-
+          
           {userData?.success && user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -125,16 +135,19 @@ const NavBar = ( { userData }: NavbarProps) => {
                 </DropdownMenuLabel>
 
                 <DropdownMenuSeparator />
-
+                 
+                 {/* user dropdown menu items */}
                 {userMenuItems.map((item) => {
                   const Icon = item.icon;
 
                   return (
-                    <DropdownMenuItem asChild key={item.href}>
-                      <Link href={item.href} className="cursor-pointer">
-                        <Icon className="mr-2 h-4 w-4" />
-                        {item.label}
-                      </Link>
+                    <DropdownMenuItem
+                      onClick={() => handleUserActions(item?.action)}
+                      className="cursor-pointer"
+                      key={item.href}
+                    >
+                      <Icon className="mr-2 h-4 w-4" />
+                      {item.label}
                     </DropdownMenuItem>
                   );
                 })}
@@ -142,11 +155,11 @@ const NavBar = ( { userData }: NavbarProps) => {
                 <DropdownMenuSeparator />
 
                 <DropdownMenuItem
-                 className="cursor-pointer text-red-500"
-                 onClick={()=>{
-                  handleLogout("logout")
-                 }}
-                 >
+                  className="cursor-pointer text-red-500"
+                  onClick={() => {
+                    handleUserActions("logout");
+                  }}
+                >
                   <LogOut className="mr-2 h-4 w-4" />
                   Logout
                 </DropdownMenuItem>

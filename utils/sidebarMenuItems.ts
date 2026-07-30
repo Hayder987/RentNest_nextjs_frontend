@@ -1,6 +1,6 @@
 
 import { ISidebarItem } from "@/lib/common.type";
-import { LayersPlus, UserRoundPen } from "lucide-react";
+import { LandPlot, LayersPlus, UserRoundPen } from "lucide-react";
 
 // tenant side bar
  const TENANT_SIDEBAR_ITEMS: ISidebarItem[] = [
@@ -23,6 +23,12 @@ import { LayersPlus, UserRoundPen } from "lucide-react";
     url: "/landlord-dashboard/add-properties",
     icon: LayersPlus,
   },
+  {
+    title: "My Properties",
+    url: "/landlord-dashboard/my-properties",
+    icon: LandPlot,
+  },
+  
 ];
 
 // admin sidebar
