@@ -1,13 +1,26 @@
-import DashboardContainer from "@/components/shared/Container/DashBoardContainer";
+import DashboardSidebar from "@/components/dashBoardComponents/DashBoardSidebar";
+import {
+  SidebarProvider,
+  SidebarInset,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 import { getMyProfile } from "@/services/getMyProfile";
 
 const DashBoardLayout = async ({ children }: { children: React.ReactNode }) => {
   const userData = await getMyProfile();
 
   return (
-    <div className="min-h-full flex flex-col p-2 md:p-6">
-      <DashboardContainer>{children}</DashboardContainer>
-    </div>
+    <SidebarProvider>
+      <DashboardSidebar userData={userData} />
+
+      <SidebarInset>
+        <header className="flex h-16 items-center border-b bg-white px-5">
+          <SidebarTrigger />
+        </header>
+
+        <main className="p-6">{children}</main>
+      </SidebarInset>
+    </SidebarProvider>
   );
 };
 

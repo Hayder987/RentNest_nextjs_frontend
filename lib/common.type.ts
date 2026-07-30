@@ -1,5 +1,7 @@
 
 import { IUser } from "./auth.types";
+import { LucideIcon, LucideProps } from "lucide-react";
+import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 export interface MobileMenuProps {
   user: IUser | null;
@@ -21,4 +23,20 @@ export interface IUserProfileResponse {
   statusCode: number;
   message: string;
   data: IUser;
+}
+
+export interface NavbarProps {
+  userData: IUserProfileResponse ;
+}
+
+export interface ISidebarMenu {
+  title: string;
+  href: string;
+  icon: LucideIcon;
+}
+
+export type ISidebarItem = {
+    title: string,
+    url: string,
+    icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>
 }

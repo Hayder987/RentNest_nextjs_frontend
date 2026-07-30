@@ -17,7 +17,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { IUserProfileResponse } from "@/lib/common.type";
+import { NavbarProps } from "@/lib/common.type";
+import { logout } from "@/services/logout";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -48,13 +51,20 @@ const userMenuItems = [
 ];
 
 
-export interface NavbarProps {
-  userData: IUserProfileResponse ;
-}
+
 
 const NavBar = ( { userData }: NavbarProps) => {
+  const router = useRouter();
 
   const user = userData?.data;
+
+   const handleLogout = async(action:string) =>{
+    if (action === "logout") {
+      await logout();
+      toast.info("User Logout SuccessFully ");
+      router.push("/login");
+    }
+  }
 
   return (
     <nav className="fixed top-0 z-50 w-full border-b bg-white shadow-sm">
@@ -131,7 +141,12 @@ const NavBar = ( { userData }: NavbarProps) => {
 
                 <DropdownMenuSeparator />
 
-                <DropdownMenuItem className="cursor-pointer text-red-500">
+                <DropdownMenuItem
+                 className="cursor-pointer text-red-500"
+                 onClick={()=>{
+                  handleLogout("logout")
+                 }}
+                 >
                   <LogOut className="mr-2 h-4 w-4" />
                   Logout
                 </DropdownMenuItem>

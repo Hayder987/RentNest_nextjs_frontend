@@ -36,3 +36,33 @@ export interface IPaginationMeta {
   total: number;
   totalPages: number;
 }
+
+export interface PropertySummary {
+  id: string;
+  title: string;
+}
+
+export interface CategoryCount {
+  properties: number;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  properties: PropertySummary[];
+  _count: CategoryCount;
+}
+
+export interface CategoryMeta {
+  total: number;
+}
+
+export interface CategoriesResponse {
+  success: boolean;
+  statusCode: number;
+  message: string;
+  data: Category[];
+  meta: CategoryMeta;
+}

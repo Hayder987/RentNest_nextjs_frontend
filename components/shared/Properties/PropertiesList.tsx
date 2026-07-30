@@ -7,6 +7,7 @@ import { SearchX } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { getAllCategoryPublic } from "@/app/(publicGroup)/_actions/getAllCategory";
 
 export default async function PropertiesPublicList({
   searchParams,
@@ -16,6 +17,9 @@ export default async function PropertiesPublicList({
   const query = await searchParams;
 
   const properties = await getAllProperties({ query });
+  const categoryData = await getAllCategoryPublic();
+
+
 
   if (!properties.success || !properties.data?.length) {
   return (
@@ -49,7 +53,7 @@ export default async function PropertiesPublicList({
 
   return (
     <div className="">
-      <PropertyFilter />
+      <PropertyFilter categoryData = {categoryData} />
 
       <div className="grid gap-6 mt-8 md:grid-cols-2 lg:grid-cols-3">
         {properties?.data.map((property: IProperty) => (

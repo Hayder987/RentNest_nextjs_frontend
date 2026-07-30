@@ -14,8 +14,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { CategoriesResponse } from "@/lib/properties.type";
 
-const PropertyFilter = () => {
+type categoryResponseProps = {
+  categoryData: CategoriesResponse;
+};
+
+const PropertyFilter = ({ categoryData }: categoryResponseProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -37,21 +42,20 @@ const PropertyFilter = () => {
   );
 
   const handleChange = () => {
-   const params = new URLSearchParams();
+    const params = new URLSearchParams();
 
-      if (location) params.set("location", location);
-      if (type) params.set("type", type);
-      if (minPrice) params.set("minPrice", minPrice);
-      if (maxPrice) params.set("maxPrice", maxPrice);
+    if (location) params.set("location", location);
+    if (type) params.set("type", type);
+    if (minPrice) params.set("minPrice", minPrice);
+    if (maxPrice) params.set("maxPrice", maxPrice);
 
-      params.set("sortBy", sortBy);
-      params.set("sortOrder", sortOrder);
+    params.set("sortBy", sortBy);
+    params.set("sortOrder", sortOrder);
 
-      params.set("page", "1");
+    params.set("page", "1");
 
-      router.replace(`${pathname}?${params.toString()}`);
+    router.replace(`${pathname}?${params.toString()}`);
   };
-
 
   const resetFilters = () => {
     setLocation("");
@@ -82,13 +86,13 @@ const PropertyFilter = () => {
           </SelectTrigger>
 
           <SelectContent>
-            <SelectItem value="Apartment">Apartment</SelectItem>
-
-            <SelectItem value="Studio">Studio</SelectItem>
-
-            <SelectItem value="House">House</SelectItem>
-
-            <SelectItem value="Office">Office</SelectItem>
+            {categoryData?.success ? (
+              categoryData?.data.map((item) => (
+                <SelectItem key={item?.id} value={item?.name}>{item?.name}</SelectItem>
+              ))
+            ) : (
+              <SelectItem value="Studio">No Category Found</SelectItem>
+            )}
           </SelectContent>
         </Select>
 
