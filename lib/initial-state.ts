@@ -11,3 +11,9 @@ export const initialLoginState: LoginState = {
   success: false,
   message: "",
 };
+
+export interface ProPertyDetailsProps {
+  params: Promise<{
+    id: string;
+  }>;
+}
