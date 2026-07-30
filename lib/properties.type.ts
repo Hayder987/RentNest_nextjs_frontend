@@ -66,3 +66,26 @@ export interface CategoriesResponse {
   data: Category[];
   meta?: CategoryMeta;
 }
+
+export interface PropertyCount {
+  rentals: number;
+  reviews: number;
+}
+
+export interface IPropertyDetails {
+  id: string;
+  title: string;
+  description: string;
+  location: string;
+  price: number;
+  image: string;
+  available: boolean;
+  landlordId: string;
+  categoryId: string;
+  createdAt: string;
+  updatedAt: string;
+
+  landlord: ILandlord;
+  category: ICategory;
+  _count: PropertyCount;
+}

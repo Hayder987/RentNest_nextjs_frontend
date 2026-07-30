@@ -1,5 +1,4 @@
 import { getMyProperties } from "@/app/(dashboardGroup)/_actions/LandLordActions/getMyProperties";
-import { getAllCategoryPublic } from "@/app/(publicGroup)/_actions/getAllCategory";
 import EditPropertyCard from "./EditPropertyCard";
 import { IMyProperty } from "@/lib/dashboard.type";
 import { Badge } from "../ui/badge";
@@ -7,7 +6,6 @@ import PropertiesNotFound from "../shared/Properties/PropertiesNotFound";
 
 const MyPropertiesList = async () => {
   const properties = await getMyProperties();
-  const categoryData = await getAllCategoryPublic();
 
   if(!properties.success && !properties.length){
     return <PropertiesNotFound/>
@@ -32,7 +30,7 @@ const MyPropertiesList = async () => {
       </div>
       <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
         {properties?.data?.map((property: IMyProperty) => (
-          <EditPropertyCard key={property.id} property={property} categoryData={categoryData} />
+          <EditPropertyCard key={property.id} property={property} />
         ))}
       </div>
     </div>

@@ -21,18 +21,20 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { addPropertySchema } from "@/lib/validation/property.validtion";
 import { addPropertyAction } from "@/app/(dashboardGroup)/_actions/LandLordActions/addPropertyAction";
 import { toast } from "sonner";
-import { CategoriesResponse } from "@/lib/properties.type";
+import { CategoriesResponse, IPropertyDetails } from "@/lib/properties.type";
+import { updatePropertyAction } from "@/app/(dashboardGroup)/_actions/LandLordActions/updatePropertyActions";
 
 interface AddPropertyFormProps {
+  property: IPropertyDetails 
   categories: CategoriesResponse;
 }
 
 type EditPropertyFormValues = z.output<typeof addPropertySchema>;
 
-export default function EditPropertyForm({ categories }: AddPropertyFormProps) {
+export default function EditPropertyForm({ property, categories }: AddPropertyFormProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(property?.image || "");
   const [uploading, setUploading] = useState(false);
 
   const form = useForm<
@@ -43,12 +45,12 @@ export default function EditPropertyForm({ categories }: AddPropertyFormProps) {
     resolver: zodResolver(addPropertySchema),
 
     defaultValues: {
-      title: "",
-      description: "",
-      location: "",
-      price: 0,
-      categoryId: "",
-      available: true,
+      title: property?.title,
+      description: property?.description,
+      location: property?.location,
+      price: property?.price,
+      categoryId: property?.category?.id,
+      available: property?.available,
     },
   });
 
@@ -64,9 +66,10 @@ export default function EditPropertyForm({ categories }: AddPropertyFormProps) {
     }
 
     startTransition(async () => {
-      const res = await addPropertyAction({
+      const res = await updatePropertyAction({
         ...data,
         image,
+        id: property?.id
       });
 
       if (!res.success) {
@@ -74,19 +77,17 @@ export default function EditPropertyForm({ categories }: AddPropertyFormProps) {
         return;
       }
 
+      router.push("/landlord-dashboard/my-properties");
+
       toast.success(res.message);
 
-      form.reset();
-      setImage("");
-
-      router.push("/landlord-dashboard/my-properties");
     });
   };
 
   return (
     <Card className="max-w-4xl mx-auto">
       <CardHeader>
-        <CardTitle className="text-2xl">Edit This Property</CardTitle>
+        <CardTitle className="text-2xl">Edit {property?.title} Property</CardTitle>
       </CardHeader>
 
       <CardContent>
@@ -186,7 +187,7 @@ export default function EditPropertyForm({ categories }: AddPropertyFormProps) {
           {/* submit button */}
           <div className="flex justify-end">
             <Button type="submit" disabled={isPending || uploading}>
-              {isPending ? "Adding Property..." : "Add Property"}
+              {isPending ? "Updating Property..." : "Edit Property"}
             </Button>
           </div>
         </form>

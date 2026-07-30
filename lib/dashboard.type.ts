@@ -9,6 +9,17 @@ export interface AddPropertyPayload {
   categoryId: string;
 }
 
+export interface UpdatePropertyPayload {
+  title?: string;
+  description?: string;
+  location?: string;
+  price?: number;
+  image?: string;
+  available?: boolean;
+  categoryId?: string;
+  id: string
+}
+
 
 export interface IMyProperty {
   id: string;

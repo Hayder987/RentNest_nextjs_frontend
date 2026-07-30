@@ -3,42 +3,24 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import {
-  Calendar,
-  Edit,
-  MapPin,
-  Star,
-  Trash2,
-} from "lucide-react";
-
+import { Calendar, Edit, MapPin, Star, Trash2 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 
 import { Button } from "@/components/ui/button";
 
-import {
-  Card,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { IMyProperty } from "@/lib/dashboard.type";
-import { CategoriesResponse } from "@/lib/properties.type";
 import DeletePropertyButton from "./DeletePropertyButton";
 
 interface Props {
   property: IMyProperty;
-  categoryData: CategoriesResponse
 }
 
-export default function EditPropertyCard({
-  property,
-  categoryData
-}: Props) {
+export default function EditPropertyCard({ property }: Props) {
   return (
     <Card className="overflow-hidden rounded-xl py-0 transition hover:shadow-xl">
-
       <div className="relative">
-
         <Image
           src={property?.image}
           alt={property?.title}
@@ -52,36 +34,24 @@ export default function EditPropertyCard({
         </Badge>
 
         <Badge
-          variant={
-            property?.available
-              ? "default"
-              : "destructive"
-          }
+          variant={property?.available ? "default" : "destructive"}
           className="absolute right-4 top-4"
         >
-          {property?.available
-            ? "Available"
-            : "Unavailable"}
+          {property?.available ? "Available" : "Unavailable"}
         </Badge>
-
       </div>
 
       <CardContent className="space-y-4 p-5">
-
         <div>
-
           <h2 className="line-clamp-1 text-xl font-semibold">
             {property?.title}
           </h2>
 
           <div className="mt-2 flex items-center gap-2 text-muted-foreground">
-
             <MapPin className="h-4 w-4 text-primary" />
 
             <span>{property?.location}</span>
-
           </div>
-
         </div>
 
         <p className="line-clamp-2 text-sm text-muted-foreground">
@@ -89,74 +59,45 @@ export default function EditPropertyCard({
         </p>
 
         <div className="grid grid-cols-2 gap-3 text-sm">
-
           <div>
-
-            <p className="text-muted-foreground">
-              Monthly Rent
-            </p>
+            <p className="text-muted-foreground">Monthly Rent</p>
 
             <p className="font-semibold text-primary">
               ৳ {property?.price.toLocaleString()}
             </p>
-
           </div>
 
           <div className="text-right">
-
-            <p className="text-muted-foreground">
-              Reviews
-            </p>
+            <p className="text-muted-foreground">Reviews</p>
 
             <div className="flex items-center justify-end gap-1">
-
               <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
 
               {property?._count.reviews}
-
             </div>
-
           </div>
-
         </div>
 
         <div className="flex items-center justify-between text-sm">
-
           <div>
-
             Rentals
-
             <span className="ml-2 font-semibold">
               {property?._count.rentals}
             </span>
-
           </div>
 
           <div className="flex items-center gap-2 text-muted-foreground">
-
             <Calendar className="h-4 w-4" />
 
-            {new Date(
-              property?.createdAt
-            ).toLocaleDateString()}
-
+            {new Date(property?.createdAt).toLocaleDateString()}
           </div>
-
         </div>
-
       </CardContent>
 
       <CardFooter className="grid grid-cols-2 gap-3 p-5 pt-0">
-
-        <Button
-          asChild
-          variant="outline"
-        >
-          <Link
-            href={`/dashboard/landlord/edit-property/${property.id}`}
-          >
+        <Button asChild variant="outline">
+          <Link href={`/landlord-dashboard/edit-property/${property?.id}`}>
             <Edit className="mr-2 h-4 w-4" />
-
             Edit
           </Link>
         </Button>
@@ -169,10 +110,8 @@ export default function EditPropertyCard({
 
           Delete
         </Button> */}
-        <DeletePropertyButton id={property?.id}/>
-
+        <DeletePropertyButton id={property?.id} />
       </CardFooter>
-
     </Card>
   );
-};
+}

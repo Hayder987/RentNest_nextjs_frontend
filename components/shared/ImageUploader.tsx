@@ -125,11 +125,11 @@ const ImageUploader = ({
             type="button"
             variant="destructive"
             size="icon"
-            className="absolute right-3 top-3"
+            className="absolute right-3 top-3 cursor-pointer"
             onClick={removeImage}
             disabled={loading}
           >
-            <X className="size-4" />
+            <X className="size-8 bg-amber-400 rounded-full " />
           </Button>
         </div>
       )}
