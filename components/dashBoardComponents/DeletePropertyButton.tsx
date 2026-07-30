@@ -1,17 +1,20 @@
-"use client"
+"use client";
 
-import { Trash2 } from "lucide-react"
+import { Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import ConfirmDialog from "./ConfirmDialog";
 import { deletePropertyById } from "@/app/(dashboardGroup)/_actions/LandLordActions/deletePropertyById";
 import { Button } from "../ui/button";
+import { useState } from "react";
 
+const DeletePropertyButton = ({ id }: { id: string }) => {
+  const [loading, setLoading] = useState(false);
 
-const DeletePropertyButton = ({id} : {id:string}) => {
-
- const handleDelete = async () => {
-    await deletePropertyById({id});
-     toast.info("Property Deleted SuccessFully!")
+  const handleDelete = async () => {
+    await setLoading(true);
+    await deletePropertyById({ id });
+    setLoading(false);
+    toast.info("Property Deleted SuccessFully!");
   };
 
   return (
@@ -23,15 +26,20 @@ const DeletePropertyButton = ({id} : {id:string}) => {
       onConfirm={handleDelete}
       trigger={
         <Button
-          variant="destructive"
-        >
-          <Trash2 className="mr-2 h-4 w-4" />
-
-          Delete
+         disabled = {loading} 
+        variant="destructive">
+          {loading ? (
+            "Deleting..."
+          ) : (
+            <>
+              <Trash2 className="mr-2 h-4 w-4" />
+              Delete
+            </>
+          )}
         </Button>
       }
     />
   );
-}
+};
 
-export default DeletePropertyButton
+export default DeletePropertyButton;

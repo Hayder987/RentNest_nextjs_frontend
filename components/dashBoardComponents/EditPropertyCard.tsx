@@ -102,14 +102,6 @@ export default function EditPropertyCard({ property }: Props) {
           </Link>
         </Button>
 
-        {/* <Button
-          variant="destructive"
-          onClick={() => {}}
-        >
-          <Trash2 className="mr-2 h-4 w-4" />
-
-          Delete
-        </Button> */}
         <DeletePropertyButton id={property?.id} />
       </CardFooter>
     </Card>
