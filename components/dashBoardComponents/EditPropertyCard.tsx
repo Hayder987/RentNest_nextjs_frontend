@@ -22,13 +22,16 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { IMyProperty } from "@/lib/dashboard.type";
+import { CategoriesResponse } from "@/lib/properties.type";
 
 interface Props {
   property: IMyProperty;
+  categoryData: CategoriesResponse
 }
 
 export default function EditPropertyCard({
   property,
+  categoryData
 }: Props) {
   return (
     <Card className="overflow-hidden rounded-xl py-0 transition hover:shadow-xl">

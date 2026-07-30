@@ -64,5 +64,5 @@ export interface CategoriesResponse {
   statusCode: number;
   message: string;
   data: Category[];
-  meta: CategoryMeta;
+  meta?: CategoryMeta;
 }

@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { SubmitHandler, useForm, Controller } from "react-hook-form";
+import { SubmitHandler, useForm, Controller, useWatch } from "react-hook-form";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import ImageUploader from "@/components/shared/ImageUploader";
@@ -50,6 +50,11 @@ export default function AddPropertyForm({ categories }: AddPropertyFormProps) {
       categoryId: "",
       available: true,
     },
+  });
+
+  const available = useWatch({
+    control: form.control,
+    name: "available",
   });
 
   const onSubmit: SubmitHandler<AddPropertyFormValues> = (data) => {
@@ -134,7 +139,7 @@ export default function AddPropertyForm({ categories }: AddPropertyFormProps) {
 
           <div className="flex items-center gap-2">
             <Checkbox
-              checked={form.watch("available")}
+              checked={available}
               onCheckedChange={(checked) =>
                 form.setValue("available", checked === true)
               }
