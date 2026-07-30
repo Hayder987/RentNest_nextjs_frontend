@@ -15,6 +15,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarSeparator,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -80,6 +81,7 @@ export default function DashboardSidebar({ userData }: NavbarProps) {
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
+              <SidebarSeparator/>
 
               {/* Menu Items */}
               {menuItems.map((item) => {
