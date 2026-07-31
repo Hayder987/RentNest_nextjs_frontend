@@ -19,6 +19,13 @@ export async function getAdminPropertiesAction(
     return {
       success: false,
       message: "User not logged in.",
+      data: [],
+      meta: {
+        page: 1,
+        limit: 10,
+        total: 0,
+        totalPages: 0,
+      },
     };
   }
 
