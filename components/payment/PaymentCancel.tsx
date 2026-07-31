@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface PaymentCancelProps {
-  rentalId?: string;
+  session_id?: string;
 }
 
 export default function PaymentCancel({
-  rentalId,
+  session_id,
 }: PaymentCancelProps) {
   return (
     <Card className="mx-auto max-w-2xl">
@@ -36,9 +36,9 @@ export default function PaymentCancel({
 
         {/* Rental ID */}
 
-        {rentalId && (
+        {session_id && (
           <p className="mt-4 text-sm text-muted-foreground">
-            Rental ID: {rentalId}
+            Session ID: {session_id}
           </p>
         )}
 

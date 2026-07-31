@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface PaymentSuccessProps {
-  rentalId?: string;
+  session_id?: string;
 }
 
 export default function PaymentSuccess({
-  rentalId,
+  session_id,
 }: PaymentSuccessProps) {
   return (
     <Card className="mx-auto max-w-2xl">
@@ -27,9 +27,9 @@ export default function PaymentSuccess({
           Your rental request has been updated.
         </p>
 
-        {rentalId && (
+        {session_id && (
           <p className="mt-4 text-sm text-muted-foreground">
-            Rental ID: {rentalId}
+            Session ID: {session_id}
           </p>
         )}
 
