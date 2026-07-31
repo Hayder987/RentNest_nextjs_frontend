@@ -5,12 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { RentalDetailsProps } from "@/lib/initial-state";
-import { getStatusBadge } from "@/utils/getStatusBadge";
+import { RentalStatusBadge } from "@/utils/getStatusBadge";
+import PaymentButton from "../shared/PaymentButton";
 
 
 export default function RentalDetails({
   rental,
 }: RentalDetailsProps) {
+
+  const status = rental?.status;
 
   return (
     <section className="mx-auto max-w-7xl space-y-8">
@@ -56,7 +59,7 @@ export default function RentalDetails({
               {rental.property.category.name}
             </Badge>
 
-            {getStatusBadge({rental})}
+            {RentalStatusBadge({status})}
 
           </div>
 
@@ -140,7 +143,7 @@ export default function RentalDetails({
 
             <span>Status</span>
 
-            {getStatusBadge({rental})}
+            {RentalStatusBadge({status})}
 
           </div>
 
@@ -351,16 +354,7 @@ export default function RentalDetails({
                 </p>
 
                 {rental.status === "APPROVED" && (
-                  <Button
-                    asChild
-                    className="w-full"
-                  >
-                    <Link
-                      href={`/tenant-dashboard/payment/${rental.id}`}
-                    >
-                      Proceed To Payment
-                    </Link>
-                  </Button>
+                  <PaymentButton id={rental?.id}/>
                 )}
 
                 {rental.status === "PENDING" && (

@@ -152,3 +152,17 @@ export interface RentalDetailsResponseById {
   message: string;
   data: RentalDetailsById;
 }
+
+export interface PaymentActionState {
+  success: boolean;
+  statusCode?: number;
+  message: string;
+  data?: {
+    sessionId: string;
+    checkoutUrl: string;
+  };
+  fieldErrors?: {
+    field: string;
+    message: string;
+  }[];
+}

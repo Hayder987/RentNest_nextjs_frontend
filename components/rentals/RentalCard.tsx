@@ -19,6 +19,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { MyRentalRequest } from "@/lib/rental.type";
+import PaymentButton from "../shared/PaymentButton";
 
 
 interface Props {
@@ -156,7 +157,7 @@ export default function RentalCard({
 
           <h2 className="text-3xl font-bold text-primary">
 
-            ৳
+            $
             {rental.property.price.toLocaleString()}
 
           </h2>
@@ -178,16 +179,7 @@ export default function RentalCard({
         </Button>
 
         {rental.status === "APPROVED" && (
-          <Button
-            asChild
-            className="w-full"
-          >
-            <Link
-              href={`/tenant-dashboard/payment/${rental.id}`}
-            >
-              Proceed To Payment
-            </Link>
-          </Button>
+          <PaymentButton id={rental.id}/>
         )}
 
       </CardFooter>

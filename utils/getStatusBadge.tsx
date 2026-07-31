@@ -3,10 +3,14 @@ import {CheckCircle2, Clock3, XCircle,} from "lucide-react";
 
 
 import { Badge } from "@/components/ui/badge";
-import { RentalDetailsProps } from "@/lib/initial-state";
+import { RentalStatus } from "@/lib/rental.type";
 
-export const getStatusBadge = ({rental} : RentalDetailsProps) => {
-    switch (rental.status) {
+interface StatusBadgeProps {
+  status: RentalStatus;
+}
+
+export const RentalStatusBadge = ({ status }: StatusBadgeProps) => {
+    switch (status) {
       case "PENDING":
         return (
           <Badge
