@@ -63,6 +63,11 @@ import { ChartLine, ClipboardClock, DollarSign, LandPlot, LayersPlus, ShoppingBa
     url: "/admin-dashboard/all-users",
     icon: UserCog,
   },
+  {
+    title: "All Properties",
+    url: "/admin-dashboard/all-property",
+    icon: LandPlot,
+  },
 ];
 
 export const sidebarMenuItems = {
