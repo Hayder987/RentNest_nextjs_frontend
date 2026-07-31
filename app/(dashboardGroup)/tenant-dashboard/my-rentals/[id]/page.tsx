@@ -1,6 +1,7 @@
-import { getRentalByIdAction } from "@/app/(dashboardGroup)/_actions/TenantActions/getRentalByIdAction";
-import RentalDetails from "@/components/rentals/RentalDetails";
-import RentalNotFound from "@/components/rentals/RentalNotFound";
+
+import RentalDetailsList from "@/components/rentals/RentalDetailsList";
+import RentalDetailsSkeleton from "@/components/rentals/RentalDetailsSkeleton";
+import { Suspense } from "react";
 
 interface Props {
   params: Promise<{
@@ -9,13 +10,15 @@ interface Props {
 }
 
 export default async function RentalDetailsPage({ params }: Props) {
-  const { id } = await params;
+  
 
-  const res = await getRentalByIdAction(id);
+  return (
+    <div className="">
 
-  if (!res.success) {
-    return <RentalNotFound />;
-  }
+     <Suspense fallback={<RentalDetailsSkeleton/>}>
+      <RentalDetailsList params={ params }/>
+     </Suspense>
 
-  return <RentalDetails rental={res.data} />;
+    </div>
+  )
 }
