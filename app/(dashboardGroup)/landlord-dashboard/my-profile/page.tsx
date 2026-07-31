@@ -1,9 +1,15 @@
-
+import ProfileList from "@/components/shared/ProfileList";
+import ProfileSkeleton from "@/components/shared/ProfileSkeleton";
+import { Suspense } from "react";
 
 const LandlordMyProfilePage = () => {
   return (
-    <div>LandlordMyProfilePage</div>
-  )
-}
+    <div>
+      <Suspense fallback={<ProfileSkeleton />}>
+        <ProfileList />
+      </Suspense>
+    </div>
+  );
+};
 
-export default LandlordMyProfilePage
+export default LandlordMyProfilePage;

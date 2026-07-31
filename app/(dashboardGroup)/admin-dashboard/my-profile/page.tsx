@@ -1,8 +1,15 @@
-import React from 'react'
+import ProfileList from "@/components/shared/ProfileList"
+import ProfileSkeleton from "@/components/shared/ProfileSkeleton"
+import { Suspense } from "react"
+
 
 const AdminMyProfilePage = () => {
   return (
-    <div>AdminMyProfilePage</div>
+    <div>
+      <Suspense fallback={<ProfileSkeleton/>}>
+        <ProfileList/>
+      </Suspense>
+    </div>
   )
 }
 

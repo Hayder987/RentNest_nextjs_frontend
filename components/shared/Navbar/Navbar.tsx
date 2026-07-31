@@ -37,12 +37,6 @@ const userMenuItems = [
     action: "dashboard",
   },
   {
-    label: "Profile",
-    icon: User,
-    href: "/profile",
-    action: "profile",
-  },
-  {
     label: "Settings",
     icon: Settings,
     href: "/settings",
