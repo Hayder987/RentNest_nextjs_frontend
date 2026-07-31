@@ -42,3 +42,13 @@ export interface UserSearchParams {
   page?: string;
   limit?: string;
 }
+
+export interface AdminUsersPageProps {
+  searchParams: Promise<{
+    searchTerm?: string;
+    role?: string;
+    status?: string;
+    page?: string;
+    limit?: string;
+  }>;
+}
