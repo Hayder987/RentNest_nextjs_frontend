@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { LayoutDashboard, LogOut, Settings, User } from "lucide-react";
+import { LayoutDashboard, LogOut, Settings } from "lucide-react";
 
 import MobileMenu from "./MobileMenu";
 

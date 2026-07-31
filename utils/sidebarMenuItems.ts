@@ -1,6 +1,6 @@
 
 import { ISidebarItem } from "@/lib/common.type";
-import { ClipboardClock, DollarSign, LandPlot, LayersPlus, ShoppingBag, UserRoundPen } from "lucide-react";
+import { ChartLine, ClipboardClock, DollarSign, LandPlot, LayersPlus, ShoppingBag, UserRoundPen } from "lucide-react";
 
 // tenant side bar
  const TENANT_SIDEBAR_ITEMS: ISidebarItem[] = [
@@ -52,6 +52,11 @@ import { ClipboardClock, DollarSign, LandPlot, LayersPlus, ShoppingBag, UserRoun
     title: "My Profile",
     url: "/admin-dashboard/my-profile",
     icon: UserRoundPen,
+  },
+  {
+    title: "Site Overview",
+    url: "/admin-dashboard/overview",
+    icon: ChartLine,
   },
 ];
 
