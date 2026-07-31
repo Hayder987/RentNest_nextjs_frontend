@@ -1,15 +1,8 @@
 "use server";
 
-import {
-  CreateRentalRequestPayload,
-  RentalRequestResponse,
-} from "@/lib/rental.type";
-import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
-export async function createRentalRequestAction(
-  payload: CreateRentalRequestPayload,
-): Promise<RentalRequestResponse> {
+export async function getMyRentalRequestsAction() {
   const cookieStore = await cookies();
 
   const accessToken = cookieStore.get("accessToken")?.value || null;
@@ -22,21 +15,17 @@ export async function createRentalRequestAction(
   }
 
   const res = await fetch(`${process.env.BACKEND_API_URL}/api/rentals`, {
-    method: "POST",
     headers: {
       Cookie: `accessToken=${accessToken}`,
-      "Content-Type": "application/json",
     },
-    body: JSON.stringify(payload),
+    cache: "force-cache",
+    next: {
+      revalidate: 60 * 60 * 2,
+      tags: ["my-rental"],
+    },
   });
 
   const result = await res.json();
-
-  if(result?.success){
-    revalidateTag("my-rental", {
-        expire : 0
-    })
-  }
 
   return result;
 }

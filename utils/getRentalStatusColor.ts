@@ -20,4 +20,4 @@ export function getRentalStatusColor(status: RentalStatus) {
     default:
       return "secondary";
   }
-}
+};

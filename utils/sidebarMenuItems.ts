@@ -1,6 +1,6 @@
 
 import { ISidebarItem } from "@/lib/common.type";
-import { LandPlot, LayersPlus, UserRoundPen } from "lucide-react";
+import { LandPlot, LayersPlus, ShoppingBag, UserRoundPen } from "lucide-react";
 
 // tenant side bar
  const TENANT_SIDEBAR_ITEMS: ISidebarItem[] = [
@@ -8,6 +8,11 @@ import { LandPlot, LayersPlus, UserRoundPen } from "lucide-react";
     title: "My Profile",
     url: "/tenant-dashboard/my-profile",
     icon: UserRoundPen,
+  },
+  {
+    title: "My Rental",
+    url: "/tenant-dashboard/my-rentals",
+    icon: ShoppingBag,
   },
 ];
 

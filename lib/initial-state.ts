@@ -1,4 +1,5 @@
 import { LoginState, RegisterState } from "./auth.types";
+import { RentalDetailsById } from "./rental.type";
 
 export const initialRegisterState: RegisterState = {
   success: false,
@@ -16,4 +17,8 @@ export interface ProPertyDetailsProps {
   params: Promise<{
     id: string;
   }>;
+}
+
+export interface RentalDetailsProps {
+  rental: RentalDetailsById;
 }
