@@ -1,36 +1,318 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏠 RentNest
 
-## Getting Started
+> **RentNest** is a modern full-stack property rental platform built with **Next.js 16**, **React 19**, **TypeScript**, **Tailwind CSS**, and **shadcn/ui**. It provides a seamless rental experience for **Tenants**, **Landlords**, and **Admins** with secure authentication, online payments, property management, and role-based dashboards.
 
-First, run the development server:
+---
+
+## 🌐 Live Demo
+
+### 🖥️ Frontend
+👉 https://your-frontend-url.vercel.app
+
+### ⚙️ Backend API
+👉 https://rentnest-backend-fui8.onrender.com
+
+---
+
+# 📸 Preview
+
+> Add your screenshots here.
+
+| Home Page | Dashboard |
+|------------|-----------|
+| ![](./public/home.png) | ![](./public/dashboard.png) |
+
+---
+
+# ✨ Features
+
+## 👤 Authentication
+
+- 🔐 JWT Authentication
+- 🍪 HTTP Only Cookie Authentication
+- 📝 Register & Login
+- 🚪 Logout
+- 🔒 Protected Routes
+- 🎭 Role Based Authorization
+
+---
+
+## 🏘️ Public Features
+
+- 🏠 Browse Properties
+- 🔎 Search Properties
+- 📂 Filter by Category
+- 📍 Filter by Location
+- 💰 Filter by Price
+- 📄 Property Details
+- 📱 Fully Responsive UI
+
+---
+
+## 👨‍💼 Tenant Features
+
+- 🏠 Browse Available Properties
+- 📩 Send Rental Request
+- 💳 Secure Stripe Payment
+- 📜 Payment History
+- ⭐ Leave Review
+- 👤 Profile Management
+- 📄 My Rental Requests
+
+---
+
+## 🏢 Landlord Features
+
+- ➕ Add Property
+- ✏️ Update Property
+- 🗑️ Delete Property
+- 📋 Manage Properties
+- ✅ Approve Rental Requests
+- ❌ Reject Rental Requests
+- 🔄 Complete Rental
+- 👤 Profile Management
+
+---
+
+## 🛠️ Admin Features
+
+### 📊 Dashboard Overview
+
+- 👥 Total Users
+- 🏠 Total Properties
+- 💵 Total Revenue
+- ⏳ Pending Rentals
+- ✅ Active Rentals
+- 🎉 Completed Rentals
+
+### 👥 User Management
+
+- 🔍 Search Users
+- 🎭 Filter by Role
+- 🚦 Filter by Status
+- 📄 Pagination
+- 🚫 Block User
+- ✅ Unblock User
+
+### 🏠 Content Moderation
+
+- 📋 All Properties
+- 📋 All Rental Requests
+- 🔍 Search
+- 🎯 Filters
+- 📄 Pagination
+- 👀 Details Dialog
+
+### 🗂️ Category Management
+
+- ➕ Create Category
+- ✏️ Update Category
+- 🗑️ Delete Category
+- 📊 Property Count
+
+---
+
+# 🚀 Tech Stack
+
+## Frontend
+
+- ⚛️ Next.js 16 (App Router)
+- ⚛️ React 19
+- 🔷 TypeScript
+- 🎨 Tailwind CSS v4
+- 🧩 shadcn/ui
+- 🧾 React Hook Form
+- ✅ Zod
+- 🍞 Sonner
+- 🎯 Lucide Icons
+
+---
+
+## Backend
+
+- 🚀 Node.js
+- ⚡ Express.js
+- 🔷 TypeScript
+- 🗄️ PostgreSQL
+- 🔺 Prisma ORM
+- 🔐 JWT Authentication
+- 🔒 bcryptjs
+- 💳 Stripe Payment Gateway
+
+---
+
+# 📁 Project Structure
+
+```bash
+app
+components
+hooks
+lib
+schemas
+providers
+public
+```
+
+---
+
+# ⚙️ Environment Variables
+
+Create a `.env.local` file.
+
+```env
+BACKEND_API_URL=http://localhost:5000
+
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_key
+
+NEXT_PUBLIC_IMGBB_API_KEY=your_key
+
+JWT_ACCESS_SECRET=Your beckend secret
+
+JWT_REFRESH_SECRET=Your beckend secret
+```
+
+---
+
+# 📦 Installation
+
+Clone the project
+
+```bash
+git clone https://github.com/Hayder987/RentNest_nextjs_frontend
+```
+
+Go to project
+
+```bash
+cd rentnest-frontend
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+or
+
+```bash
+pnpm install
+```
+
+Start development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 📜 Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev
 
-## Learn More
+npm run build
 
-To learn more about Next.js, take a look at the following resources:
+npm run start
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+npm run lint
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+# 🔒 User Roles
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Role | Permissions |
+|------|-------------|
+| 👤 Tenant | Browse properties, Rent, Pay, Review |
+| 🏢 Landlord | Manage properties & rental requests |
+| 🛠️ Admin | Manage users, categories, properties & rentals |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+# 💳 Payment
+
+- 💳 Stripe Checkout
+- ✅ Secure Payment
+- 📜 Payment History
+- 🧾 Transaction Tracking
+
+---
+
+# 🎯 Validation
+
+- ✅ React Hook Form
+- ✅ Zod Validation
+- ✅ Server Actions
+- ✅ Error Handling
+
+---
+
+# 📱 Responsive Design
+
+Works perfectly on
+
+- 💻 Desktop
+- 💼 Laptop
+- 📱 Mobile
+- 📟 Tablet
+
+---
+
+# 🚀 Performance
+
+- ⚡ Next.js App Router
+- ⚡ Server Components
+- ⚡ Server Actions
+- ⚡ Route Loading
+- ⚡ Skeleton Loading
+- ⚡ Image Optimization
+- ⚡ Code Splitting
+
+---
+
+# 🛡️ Security
+
+- 🔐 JWT Authentication
+- 🍪 HTTP Only Cookies
+- 🔒 Protected Routes
+- 🎭 Role Based Access
+- ✅ Server-side Validation
+
+---
+
+# 📚 API Documentation
+
+Backend API includes endpoints for:
+
+- 👤 Authentication
+- 🏠 Properties
+- 📂 Categories
+- 📩 Rental Requests
+- 💳 Payments
+- ⭐ Reviews
+- 👥 Users
+- 📊 Admin Dashboard
+
+---
+
+# 👨‍💻 Developed By
+
+**Hayder Ali**
+
+- 💼 Full Stack Developer
+- 💻 GitHub: https://github.com/Hayder987
+- ✉️ Email: hayderbd4290@gmail.com
+
+---
+
+# ⭐ Support
+
+If you like this project, don't forget to ⭐ the repository.
+
+---
+
+# 📄 License
+
+This project is developed for educational purposes.
