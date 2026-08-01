@@ -1,6 +1,6 @@
 
 import { ISidebarItem } from "@/lib/common.type";
-import { ChartLine, ClipboardClock, DollarSign, LandPlot, LayersPlus, ShoppingBag, UserCog, UserRoundPen } from "lucide-react";
+import { ChartLine, ClipboardClock, DollarSign, FolderTree, LandPlot, LayersPlus, ShoppingBag, UserCog, UserRoundPen } from "lucide-react";
 
 // tenant side bar
  const TENANT_SIDEBAR_ITEMS: ISidebarItem[] = [
@@ -72,6 +72,11 @@ import { ChartLine, ClipboardClock, DollarSign, LandPlot, LayersPlus, ShoppingBa
     title: "All Rental",
     url: "/admin-dashboard/all-rental",
     icon: ClipboardClock,
+  },
+  {
+    title: "Category Management",
+    url: "/admin-dashboard/categories",
+    icon: FolderTree,
   },
 ];
 
