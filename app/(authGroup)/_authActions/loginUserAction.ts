@@ -6,6 +6,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function LoginUserAction(
+  redirectTo: string,
   prevState: LoginState,
   formData: FormData,
 ): Promise<LoginState> {
@@ -63,18 +64,26 @@ export async function LoginUserAction(
       sameSite: "lax",
     });
   }
-  
+
+
+  if (
+    redirectTo &&
+    typeof redirectTo === "string" &&
+    redirectTo.startsWith("/") &&
+    !redirectTo.startsWith("//")
+  ) {
+    redirect(redirectTo);
+  }
+
   // after login redirect role base dashboard route
-  if(result?.data?.user.role === "TENANT"){
-    redirect("/tenant-dashboard")
+  if (result?.data?.user.role === "TENANT") {
+    redirect("/tenant-dashboard");
+  } else if (result?.data?.user.role === "LANDLORD") {
+    redirect("/landlord-dashboard");
+  } else if (result?.data?.user.role === "ADMIN") {
+    redirect("/admin-dashboard");
   }
-  else if(result?.data?.user.role === "LANDLORD"){
-    redirect("/landlord-dashboard")
-  }
-  else if(result?.data?.user.role === "ADMIN"){
-    redirect("/admin-dashboard")
-  }
-  
+
   return {
     success: result.success,
     statusCode: result.statusCode,

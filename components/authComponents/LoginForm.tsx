@@ -27,9 +27,10 @@ const initialState: LoginState = {
 const LoginForm = () => {
   const searchParams = useSearchParams();
   const email = searchParams.get("email") ?? "";
+   const redirectTo = searchParams.get("redirectTo") ?? ""
 
   const [state, action, pending] = useActionState(
-    LoginUserAction,
+    LoginUserAction.bind(null, redirectTo),
     initialState,
   );
 
@@ -59,12 +60,6 @@ const LoginForm = () => {
     return errors;
   }, [state.error]);
 
-  const generalError =
-    Array.isArray(state.error) &&
-    state.error.length > 0 &&
-    typeof state.error[0] === "string"
-      ? state.error[0]
-      : "";
   return (
     <div className="flex max-w-250 mx-auto flex-col gap-6">
       <Card className="overflow-hidden p-0">
