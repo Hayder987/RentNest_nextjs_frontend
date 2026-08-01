@@ -4,22 +4,25 @@ import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import ContainerLg from "../shared/Container/ContainerLg";
+import exploreImg from "../../public/explore1.jpg"
+import houseImg from "../../public/house1.jpg"
+import luxeryImg from "../../public/luxery1.jpg"
 
 const categories = [
   {
     title: "Apartments",
     properties: "120+ Properties",
-    image: "/explore1.jpg",
+    image: exploreImg,
   },
   {
     title: "Family Houses",
     properties: "80+ Properties",
-    image: "/house1.jpg",
+    image: houseImg,
   },
   {
     title: "Luxury Villas",
     properties: "45+ Properties",
-    image: "/luxery1.jpg",
+    image: luxeryImg,
   },
 ];
 

@@ -1,10 +1,11 @@
 import Image from "next/image";
+import authImg from "../../public/auth-image.jpg"
 
 const RegisterBanner = () => {
   return (
     <div className="relative hidden bg-muted md:block">
       <Image
-        src="/auth-image.jpg"
+        src={authImg}
         alt="Register Banner"
         fill
         priority

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Building2, ShieldCheck, Users } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import aboutImg from "../../public/about.jpg"
 
 const features = [
   {
@@ -57,7 +58,7 @@ export default function AboutPageComponents() {
 
         <div>
           <Image
-            src="/about.jpg"
+            src={aboutImg}
             alt="About RentNest"
             width={700}
             height={500}
