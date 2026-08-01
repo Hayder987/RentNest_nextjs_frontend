@@ -4,6 +4,7 @@ import { ArrowRight, BadgeCheck, Search } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import ContainerLg from "../shared/Container/ContainerLg";
+import heroBanner from "../../public/hero-banner.jpg"
 
 const HeroSection = () => {
   return (
@@ -76,7 +77,7 @@ const HeroSection = () => {
             <div className="absolute -left-10 -top-10 h-44 w-44 rounded-full bg-primary/20 blur-3xl" />
 
             <Image
-              src="/hero-banner.jpg"
+              src={heroBanner}
               alt="Modern apartment"
               width={700}
               height={650}
