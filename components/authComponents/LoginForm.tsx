@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useMemo } from "react";
+import { useActionState, useEffect, useMemo } from "react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -17,6 +17,7 @@ import { LoginUserAction } from "@/app/(authGroup)/_authActions/loginUserAction"
 import LoginFields from "./LoginFields";
 import LoginBanner from "./LoginBanner";
 import { useSearchParams } from "next/navigation";
+import { toast } from "sonner";
 
 const initialState: LoginState = {
   success: false,
@@ -31,6 +32,16 @@ const LoginForm = () => {
     LoginUserAction,
     initialState,
   );
+
+    useEffect(() => {
+      if (!state.message) return;
+  
+      if (state.success) {
+        toast.success(state.message);
+      } else {
+        toast.error(state.message);
+      }
+    }, [state.success, state.message]);
 
   const fieldErrors = useMemo(() => {
     const errors: Record<string, string> = {};
@@ -54,7 +65,6 @@ const LoginForm = () => {
     typeof state.error[0] === "string"
       ? state.error[0]
       : "";
-
   return (
     <div className="flex max-w-250 mx-auto flex-col gap-6">
       <Card className="overflow-hidden p-0">
@@ -74,22 +84,6 @@ const LoginForm = () => {
               {/* Form Fields */}
 
               <LoginFields fieldErrors={fieldErrors} email={email} />
-
-              {/* General Error */}
-
-              {generalError && (
-                <p className="rounded-md border border-destructive/20 bg-destructive/10 p-3 text-sm text-destructive">
-                  {generalError}
-                </p>
-              )}
-
-              {/* Success */}
-
-              {state.success && (
-                <p className="rounded-md border border-green-500/20 bg-green-500/10 p-3 text-sm text-green-600">
-                  {state.message}
-                </p>
-              )}
 
               {/* Submit */}
 
@@ -111,7 +105,7 @@ const LoginForm = () => {
                 </Button>
               </Field>
 
-              <FieldSeparator>{"Don't"} Have an account?</FieldSeparator>
+              <FieldSeparator>{"Don't"} Have an account? </FieldSeparator>
 
               <FieldDescription className="text-center">
                 <Link
