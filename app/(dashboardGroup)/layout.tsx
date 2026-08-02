@@ -1,4 +1,5 @@
 import DashboardSidebar from "@/components/dashBoardComponents/DashBoardSidebar";
+import DashboardContainer from "@/components/shared/Container/DashBoardContainer";
 import {
   SidebarProvider,
   SidebarInset,
@@ -17,8 +18,9 @@ const DashBoardLayout = async ({ children }: { children: React.ReactNode }) => {
         <header className="flex h-16 items-center border-b bg-white px-5">
           <SidebarTrigger />
         </header>
-
-        <main className="p-6">{children}</main>
+        <DashboardContainer>
+          <main className="p-6">{children}</main>
+        </DashboardContainer>
       </SidebarInset>
     </SidebarProvider>
   );
