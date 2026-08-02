@@ -1,18 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
-
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { IPropertyDetails } from "@/lib/properties.type";
+import { useQuery } from "@tanstack/react-query";
 
 
 interface AdminPropertyDialogProps {
@@ -22,7 +20,7 @@ interface AdminPropertyDialogProps {
 }
 
 interface PropertyResponse {
-  success: boolean;
+  success: boolean; 
   data: IPropertyDetails;
 }
 
@@ -31,31 +29,23 @@ export default function AdminPropertyDialog({
   open,
   onOpenChange,
 }: AdminPropertyDialogProps) {
-  const [loading, setLoading] = useState(false);
 
-  const [property, setProperty] = useState<IPropertyDetails | null>(null);
+const {
+  data: property,
+  isLoading: loading,
+} = useQuery<IPropertyDetails | null>({
+  queryKey: ["property", propertyId],
+  queryFn: async () => {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/properties/${propertyId}`
+    );
 
-  useEffect(() => {
-    if (!open || !propertyId) return;
+    const result: PropertyResponse = await res.json();
 
-    const fetchProperty = async () => {
-      setLoading(true);
-
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/properties/${propertyId}`,
-        );
-
-        const result: PropertyResponse = await res.json();
-
-        setProperty(result.data);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProperty();
-  }, [open, propertyId]);
+    return result.data;
+  },
+  enabled: open && !!propertyId,
+});
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

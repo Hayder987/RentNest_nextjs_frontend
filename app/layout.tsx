@@ -3,11 +3,17 @@ import { cn } from "@/lib/utils";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import Providers from "./providers";
 
-const spaceGroteskHeading = Space_Grotesk({subsets:['latin'],variable:'--font-heading'});
+const spaceGroteskHeading = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
 
-const ibmPlexSans = IBM_Plex_Sans({subsets:['latin'],variable:'--font-sans'});
-
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export default function RootLayout({
   children,
@@ -17,14 +23,21 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", "font-sans", ibmPlexSans.variable, spaceGroteskHeading.variable)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        "font-sans",
+        ibmPlexSans.variable,
+        spaceGroteskHeading.variable,
+      )}
     >
       <body className="min-h-full flex flex-col">
-        <TooltipProvider>
-         <Toaster position="top-right" richColors duration={3000} />
-        {children}
-        </TooltipProvider>
-        
+        <Providers>
+          <TooltipProvider>
+            <Toaster position="top-right" richColors duration={3000} />
+            {children}
+          </TooltipProvider>
+        </Providers>
       </body>
     </html>
   );

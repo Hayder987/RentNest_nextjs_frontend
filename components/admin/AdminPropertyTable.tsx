@@ -29,8 +29,7 @@ export default function AdminPropertyTable({
   properties,
   meta,
 }: AdminPropertyTableProps) {
-  const [selectedId, setSelectedId] =
-    useState("");
+  const [selectedId, setSelectedId] = useState("");
 
   const [open, setOpen] = useState(false);
 
