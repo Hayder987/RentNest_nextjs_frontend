@@ -11,18 +11,17 @@ const DashBoardLayout = async ({ children }: { children: React.ReactNode }) => {
   const userData = await getMyProfile();
 
   return (
-    <SidebarProvider>
+    <DashboardContainer>
+      <SidebarProvider>
       <DashboardSidebar userData={userData} />
-
       <SidebarInset>
         <header className="flex h-16 items-center border-b bg-white px-5">
           <SidebarTrigger />
         </header>
-        <DashboardContainer>
           <main className="p-6">{children}</main>
-        </DashboardContainer>
       </SidebarInset>
     </SidebarProvider>
+    </DashboardContainer>
   );
 };
 
