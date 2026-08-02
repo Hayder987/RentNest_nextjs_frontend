@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Providers from "./providers";
+import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
 
 const spaceGroteskHeading = Space_Grotesk({
   subsets: ["latin"],
@@ -36,6 +37,7 @@ export default function RootLayout({
           <TooltipProvider>
             <Toaster position="top-right" richColors duration={3000} />
             {children}
+            <ScrollToTopButton/>
           </TooltipProvider>
         </Providers>
       </body>

@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, Search } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-import ContainerLg from "../shared/Container/ContainerLg";
-import heroBanner from "../../public/hero-banner.jpg"
+import heroBanner from "../../../public/hero-banner.jpg"
+import ContainerLg from "@/components/shared/Container/ContainerLg";
 
 const HeroSection = () => {
   return (

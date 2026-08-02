@@ -1,16 +1,17 @@
-import ExploreSection from "@/components/publicComponents/ExploreSection";
-import HeroSection from "@/components/publicComponents/HomeBanner";
-import { getAllProperties } from "./_actions/GetAllProperties";
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
-  // const query = await searchParams;
-  // const data = await getAllProperties({query})
+import { Suspense } from "react";
+import HomePropertiesList from "@/components/publicComponents/Home/HomePropertiesList";
+import FeaturedPropertyCardSkeleton from "@/components/publicComponents/Home/FeaturedPropertyCardSkeleton";
+import HeroSection from "@/components/publicComponents/Home/HomeBanner";
+import ExploreSection from "@/components/publicComponents/Home/ExploreSection";
+import WhyChooseSection from "@/components/publicComponents/Home/WhyChooseSection";
+import HowItWorksSection from "@/components/publicComponents/Home/HowItWorksSection";
+import StatisticsSection from "@/components/publicComponents/Home/StatisticsSection";
+import FAQSection from "@/components/publicComponents/Home/FAQSection";
+import TechnologiesSection from "@/components/publicComponents/Home/TechnologiesSection";
 
-  // console.log(data)
+export default async function Home() {
+
  
   return (
     <section className="">
@@ -20,6 +21,20 @@ export default async function Home({
       </div>
 
       <ExploreSection/>
+
+      <Suspense fallback={<FeaturedPropertyCardSkeleton/>}>
+        <HomePropertiesList/>
+      </Suspense>
+
+      <WhyChooseSection/>
+
+      <HowItWorksSection/>
+
+      <StatisticsSection/>
+
+      <FAQSection/>
+
+      <TechnologiesSection/>
       
     </section>
   );

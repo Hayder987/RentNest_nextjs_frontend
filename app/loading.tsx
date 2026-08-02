@@ -7,7 +7,7 @@ interface GlobalLoadingProps {
   className?: string;
 }
 
-const GlobalLoading = ({
+export const GlobalLoading = ({
   text = "Loading RentNest...",
   className = "",
 }: GlobalLoadingProps) => {

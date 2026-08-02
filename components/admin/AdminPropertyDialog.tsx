@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { IPropertyDetails } from "@/lib/properties.type";
 import { useQuery } from "@tanstack/react-query";
+import ModalLoadingSpinner from "../shared/ModalLoadingSpinner";
 
 
 interface AdminPropertyDialogProps {
@@ -55,7 +56,9 @@ const {
         </DialogHeader>
 
         {loading ? (
-          <div className="py-10 text-center">Loading...</div>
+          <div className="py-10 text-center">
+            <ModalLoadingSpinner/>
+          </div>
         ) : property ? (
           <div className="space-y-5">
             <Image

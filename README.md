@@ -7,7 +7,7 @@
 ## 🌐 Live Demo
 
 ### 🖥️ Frontend
-👉 https://your-frontend-url.vercel.app
+👉 https://rent-nest-nextjs-frontend.vercel.app
 
 ### ⚙️ Backend API
 👉 https://rentnest-backend-fui8.onrender.com
@@ -125,6 +125,7 @@
 - ✅ Zod
 - 🍞 Sonner
 - 🎯 Lucide Icons
+- ⚛️ Tanstack-Query
 
 ---
 

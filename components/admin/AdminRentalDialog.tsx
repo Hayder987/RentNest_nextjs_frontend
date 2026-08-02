@@ -16,6 +16,7 @@ import {
 } from "@/lib/rental.type";
 import { getRentalByIdAction } from "@/app/(dashboardGroup)/_actions/TenantActions/getRentalByIdAction";
 import { RentalStatusBadge } from "@/utils/getStatusBadge";
+import ModalLoadingSpinner from "../shared/ModalLoadingSpinner";
 
 interface Props {
   rentalId: string;
@@ -54,13 +55,15 @@ export default function AdminRentalDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[90vh] max-w-4xl overflow-y-auto">
+      <DialogContent className="max-h-[90vh] max-w-5xl overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Rental Details</DialogTitle>
         </DialogHeader>
 
         {loading ? (
-          <div className="py-10 text-center">Loading...</div>
+          <div className="py-10 text-center">
+          <ModalLoadingSpinner/>
+          </div>
         ) : !rental ? (
           <div className="py-10 text-center">Rental not found.</div>
         ) : (
@@ -126,7 +129,7 @@ export default function AdminRentalDialog({
                   <>
                     <Badge>{rental.payment.status}</Badge>
 
-                    <p className="mt-2">৳{rental.payment.amount}</p>
+                    <p className="mt-2">${rental.payment.amount}</p>
 
                     <p className="text-muted-foreground text-sm">
                       {rental.payment.transactionId}

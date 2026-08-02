@@ -3,10 +3,10 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import ContainerLg from "../shared/Container/ContainerLg";
-import exploreImg from "../../public/explore1.jpg"
-import houseImg from "../../public/house1.jpg"
-import luxeryImg from "../../public/luxery1.jpg"
+import exploreImg from "../../../public/explore1.jpg"
+import houseImg from "../../../public/house1.jpg"
+import luxeryImg from "../../../public/luxery1.jpg"
+import ContainerLg from "@/components/shared/Container/ContainerLg";
 
 const categories = [
   {
