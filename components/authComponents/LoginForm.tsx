@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useMemo } from "react";
+import { useActionState, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -27,22 +27,26 @@ const initialState: LoginState = {
 const LoginForm = () => {
   const searchParams = useSearchParams();
   const email = searchParams.get("email") ?? "";
-   const redirectTo = searchParams.get("redirectTo") ?? ""
+  const redirectTo = searchParams.get("redirectTo") ?? "";
 
   const [state, action, pending] = useActionState(
     LoginUserAction.bind(null, redirectTo),
     initialState,
   );
 
-    useEffect(() => {
-      if (!state.message) return;
-  
-      if (state.success) {
-        toast.success(state.message);
-      } else {
-        toast.error(state.message);
-      }
-    }, [state.success, state.message]);
+  const [role, setRole] = useState("");
+  // const [landlord, setLandlord] = useState(false);
+  // const [tenant, setTenant] = useState(false);
+
+  useEffect(() => {
+    if (!state.message) return;
+
+    if (state.success) {
+      toast.success(state.message);
+    } else {
+      toast.error(state.message);
+    }
+  }, [state.success, state.message]);
 
   const fieldErrors = useMemo(() => {
     const errors: Record<string, string> = {};
@@ -59,6 +63,11 @@ const LoginForm = () => {
 
     return errors;
   }, [state.error]);
+
+  const handleCredentialRole = (role: string) =>{
+       setRole(role)
+  }
+
 
   return (
     <div className="flex max-w-250 mx-auto flex-col gap-6">
@@ -78,7 +87,7 @@ const LoginForm = () => {
 
               {/* Form Fields */}
 
-              <LoginFields fieldErrors={fieldErrors} email={email} />
+              <LoginFields fieldErrors={fieldErrors} email={email} role={role} />
 
               {/* Submit */}
 
@@ -99,6 +108,30 @@ const LoginForm = () => {
                   )}
                 </Button>
               </Field>
+              <FieldSeparator></FieldSeparator>
+
+              <div className="py-2 w-full flex flex-wrap justify-center items-center gap-4">
+                <Button
+                 type="button"
+                 onClick={()=> handleCredentialRole("admin")} 
+                 className="cursor-pointer">
+                  Admin Credential
+                </Button>
+                <Button 
+                type="button" 
+                className="cursor-pointer"
+                onClick={()=> handleCredentialRole("landlord")} 
+                >
+                  Landlord Credential
+                </Button>
+                <Button 
+                type="button" 
+                className="cursor-pointer"
+                onClick={()=> handleCredentialRole("tenant")} 
+                >
+                  Tenant Credential
+                </Button>
+              </div>
 
               <FieldSeparator>{"Don't"} Have an account? </FieldSeparator>
 

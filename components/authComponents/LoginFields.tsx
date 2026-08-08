@@ -2,20 +2,20 @@
 
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
 
 interface loginFieldsProps {
   fieldErrors: Record<string, string>;
   email?: string;
+  role: string;
 }
 
-const LoginFields = ({
-  fieldErrors,
-  email,
-}: loginFieldsProps) => {
-  
+const LoginFields = ({ fieldErrors, email, role }: loginFieldsProps) => {
+  const [eye, setEye] = useState(false);
+
   return (
     <>
-    
       {/* Email */}
 
       <Field>
@@ -25,7 +25,17 @@ const LoginFields = ({
           id="email"
           name="email"
           type="email"
-          defaultValue={email ?? ""}
+          defaultValue={
+            email
+              ? email
+              : role === "admin"
+                ? "admin@gmail.com"
+                : role === "landlord"
+                  ? "landloard@gmail.com"
+                  : role === "tenant"
+                    ? "tenant@gmail.com"
+                    : ""
+          }
           placeholder="user@example.com"
         />
 
@@ -36,21 +46,33 @@ const LoginFields = ({
 
       {/* Password */}
 
-      <Field>
+      <Field className="">
         <FieldLabel htmlFor="password">Password</FieldLabel>
 
-        <Input
-          id="password"
-          name="password"
-          type="password"
-          placeholder="Minimum 8 characters"
-        />
-
+        <span className="relative">
+          <Input
+            defaultValue={
+              role === "admin" || role === "landlord" || role === "tenant"
+                ? "123456"
+                : ""
+            }
+            id="password"
+            name="password"
+            type={eye ? "text" : "password"}
+            placeholder="Minimum 8 characters"
+          />
+          <span className="absolute top-1 right-4 text-gray-500 cursor-pointer">
+            {eye ? (
+              <Eye onClick={() => setEye(!eye)} width={18} height={18} />
+            ) : (
+              <EyeOff onClick={() => setEye(!eye)} width={18} height={18} />
+            )}
+          </span>
+        </span>
         {fieldErrors.password && (
           <p className="text-sm text-destructive">{fieldErrors.password}</p>
         )}
       </Field>
-
     </>
   );
 };

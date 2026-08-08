@@ -1,20 +1,48 @@
+import type { Metadata } from "next";
 import { IBM_Plex_Sans, Space_Grotesk } from "next/font/google";
+
 import { cn } from "@/lib/utils";
+
 import "./globals.css";
+
 import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+
 import Providers from "./providers";
+import ThemeProviders from "@/components/themeProviders";
 import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
 
-const spaceGroteskHeading = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-heading",
-});
+
+// ============================================
+// Fonts
+// ============================================
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-ibm-plex-sans",
+  display: "swap",
 });
+
+const spaceGroteskHeading = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+
+// ============================================
+// Metadata
+// ============================================
+
+export const metadata: Metadata = {
+  title: "RentNest",
+  description: "Find your perfect rental property with RentNest.",
+};
+
+
+// ============================================
+// Root Layout
+// ============================================
 
 export default function RootLayout({
   children,
@@ -24,21 +52,29 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={cn(
         "h-full",
         "antialiased",
-        "font-sans",
         ibmPlexSans.variable,
         spaceGroteskHeading.variable,
       )}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col font-sans">
         <Providers>
-          <TooltipProvider>
-            <Toaster position="top-right" richColors duration={3000} />
-            {children}
-            <ScrollToTopButton/>
-          </TooltipProvider>
+          <ThemeProviders>
+            <TooltipProvider>
+              <Toaster
+                position="top-right"
+                richColors
+                duration={3000}
+              />
+
+              {children}
+
+              <ScrollToTopButton />
+            </TooltipProvider>
+          </ThemeProviders>
         </Providers>
       </body>
     </html>

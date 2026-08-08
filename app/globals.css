@@ -3,279 +3,432 @@
 @import "shadcn/tailwind.css";
 
 
+/* ============================================
+   Dark Mode
+   ============================================ */
+
 @custom-variant dark (&:is(.dark *));
 
 
+/* ============================================
+   Light Theme
+   ============================================ */
+
 :root {
+  /* Background */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.21 0.03 260);
 
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.21 0.03 260);
+  /* Card */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.03 260);
 
+  /* Popover */
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.03 260);
 
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.21 0.03 260);
+  /* ==========================================
+     RentNest Luxury Orange
+     ========================================== */
 
+  --primary: oklch(0.75 0.16 75);
+  --primary-foreground: oklch(1 0 0);
 
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.21 0.03 260);
+  /* Secondary */
+  --secondary: oklch(0.93 0.12 85);
+  --secondary-foreground: oklch(0.25 0.05 70);
 
+  /* Muted */
+  --muted: oklch(0.96 0.01 260);
+  --muted-foreground: oklch(0.55 0.02 260);
 
+  /* Accent */
+  --accent: oklch(0.93 0.12 85);
+  --accent-foreground: oklch(0.25 0.05 70);
 
-    /* RentNest Luxury Orange */
+  /* Destructive */
+  --destructive: oklch(0.62 0.22 25);
 
-    --primary: oklch(0.75 0.16 75);
-    --primary-foreground: oklch(1 0 0);
+  /* Border */
+  --border: oklch(0.91 0.01 260);
 
+  /* Input */
+  --input: oklch(0.91 0.01 260);
 
-    --secondary: oklch(0.93 0.12 85);
-    --secondary-foreground: oklch(0.25 0.05 70);
+  /* Focus Ring */
+  --ring: oklch(0.75 0.16 75);
 
+  /* Charts */
+  --chart-1: oklch(0.75 0.16 75);
+  --chart-2: oklch(0.85 0.15 85);
+  --chart-3: oklch(0.65 0.12 65);
+  --chart-4: oklch(0.55 0.10 60);
+  --chart-5: oklch(0.45 0.08 55);
 
+  /* Radius */
+  --radius: 0.625rem;
 
-    --muted: oklch(0.96 0.01 260);
-    --muted-foreground: oklch(0.55 0.02 260);
+  /* Sidebar */
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.21 0.03 260);
 
+  --sidebar-primary: oklch(0.75 0.16 75);
+  --sidebar-primary-foreground: oklch(1 0 0);
 
+  --sidebar-accent: oklch(0.93 0.12 85);
+  --sidebar-accent-foreground: oklch(0.25 0.05 70);
 
-    --accent: oklch(0.93 0.12 85);
-    --accent-foreground: oklch(0.25 0.05 70);
-
-
-
-    --destructive: oklch(0.62 0.22 25);
-
-
-
-    --border: oklch(0.91 0.01 260);
-    --input: oklch(0.91 0.01 260);
-
-
-    /* Orange focus ring */
-    --ring: oklch(0.75 0.16 75);
-
-
-
-    --chart-1: oklch(0.75 0.16 75);
-    --chart-2: oklch(0.85 0.15 85);
-    --chart-3: oklch(0.65 0.12 65);
-    --chart-4: oklch(0.55 0.10 60);
-    --chart-5: oklch(0.45 0.08 55);
-
-
-
-    --radius: 0.625rem;
-
-
-
-    /* Sidebar */
-
-    --sidebar: oklch(1 0 0);
-    --sidebar-foreground: oklch(0.21 0.03 260);
-
-
-    --sidebar-primary: oklch(0.75 0.16 75);
-    --sidebar-primary-foreground: oklch(1 0 0);
-
-
-    --sidebar-accent: oklch(0.93 0.12 85);
-    --sidebar-accent-foreground: oklch(0.25 0.05 70);
-
-
-    --sidebar-border: oklch(0.91 0.01 260);
-
-    --sidebar-ring: oklch(0.75 0.16 75);
-
+  --sidebar-border: oklch(0.91 0.01 260);
+  --sidebar-ring: oklch(0.75 0.16 75);
 }
 
 
-
+/* ============================================
+   Dark Theme
+   ============================================ */
 
 .dark {
+  /* Background */
+  --background: oklch(0.15 0.02 260);
+  --foreground: oklch(0.98 0 0);
 
+  /* Card */
+  --card: oklch(0.20 0.02 260);
+  --card-foreground: oklch(0.98 0 0);
 
-    --background: oklch(0.15 0.02 260);
-    --foreground: oklch(0.98 0 0);
+  /* Popover */
+  --popover: oklch(0.20 0.02 260);
+  --popover-foreground: oklch(0.98 0 0);
 
+  /* ==========================================
+     Dark Luxury Orange
+     ========================================== */
 
+  --primary: oklch(0.80 0.17 75);
+  --primary-foreground: oklch(0.15 0.02 260);
 
-    --card: oklch(0.20 0.02 260);
-    --card-foreground: oklch(0.98 0 0);
+  /* Secondary */
+  --secondary: oklch(0.30 0.05 70);
+  --secondary-foreground: oklch(0.95 0.05 80);
 
+  /* Muted */
+  --muted: oklch(0.25 0.02 260);
+  --muted-foreground: oklch(0.70 0.02 260);
 
+  /* Accent */
+  --accent: oklch(0.30 0.05 70);
+  --accent-foreground: oklch(0.95 0.05 80);
 
-    --popover: oklch(0.20 0.02 260);
-    --popover-foreground: oklch(0.98 0 0);
+  /* Destructive */
+  --destructive: oklch(0.70 0.18 25);
 
+  /* Border */
+  --border: oklch(1 0 0 / 10%);
 
+  /* Input */
+  --input: oklch(1 0 0 / 15%);
 
-    /* Dark Luxury Orange */
+  /* Focus Ring */
+  --ring: oklch(0.80 0.17 75);
 
-    --primary: oklch(0.80 0.17 75);
-    --primary-foreground: oklch(0.15 0.02 260);
+  /* Charts */
+  --chart-1: oklch(0.80 0.17 75);
+  --chart-2: oklch(0.85 0.15 85);
+  --chart-3: oklch(0.70 0.12 65);
+  --chart-4: oklch(0.60 0.10 60);
+  --chart-5: oklch(0.50 0.08 55);
 
+  /* Sidebar */
+  --sidebar: oklch(0.20 0.02 260);
+  --sidebar-foreground: oklch(0.98 0 0);
 
+  --sidebar-primary: oklch(0.80 0.17 75);
+  --sidebar-primary-foreground: oklch(0.15 0.02 260);
 
-    --secondary: oklch(0.30 0.05 70);
-    --secondary-foreground: oklch(0.95 0.05 80);
+  --sidebar-accent: oklch(0.30 0.05 70);
+  --sidebar-accent-foreground: oklch(0.95 0.05 80);
 
-
-
-    --muted: oklch(0.25 0.02 260);
-    --muted-foreground: oklch(0.70 0.02 260);
-
-
-
-    --accent: oklch(0.30 0.05 70);
-    --accent-foreground: oklch(0.95 0.05 80);
-
-
-
-    --destructive: oklch(0.70 0.18 25);
-
-
-
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-
-
-    --ring: oklch(0.80 0.17 75);
-
-
-
-    --chart-1: oklch(0.80 0.17 75);
-    --chart-2: oklch(0.85 0.15 85);
-    --chart-3: oklch(0.70 0.12 65);
-    --chart-4: oklch(0.60 0.10 60);
-    --chart-5: oklch(0.50 0.08 55);
-
-
-
-    --sidebar: oklch(0.20 0.02 260);
-    --sidebar-foreground: oklch(0.98 0 0);
-
-
-    --sidebar-primary: oklch(0.80 0.17 75);
-    --sidebar-primary-foreground: oklch(0.15 0.02 260);
-
-
-    --sidebar-accent: oklch(0.30 0.05 70);
-    --sidebar-accent-foreground: oklch(0.95 0.05 80);
-
-
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.80 0.17 75);
-
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.80 0.17 75);
 }
 
 
-
-
+/* ============================================
+   Tailwind Theme Mapping
+   ============================================ */
 
 @theme inline {
+  /* ==========================================
+     Fonts
+     ========================================== */
+
+  --font-sans: var(--font-ibm-plex-sans);
+  --font-heading: var(--font-space-grotesk);
 
 
-    --font-sans: var(--font-sans);
-    --font-heading: var(--font-heading);
+  /* ==========================================
+     Sidebar
+     ========================================== */
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
 
 
-    --color-sidebar-ring: var(--sidebar-ring);
-    --color-sidebar-border: var(--sidebar-border);
+  /* ==========================================
+     Charts
+     ========================================== */
+
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
 
 
-    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-    --color-sidebar-accent: var(--sidebar-accent);
+  /* ==========================================
+     UI
+     ========================================== */
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
 
 
-    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-    --color-sidebar-primary: var(--sidebar-primary);
+  /* ==========================================
+     Accent
+     ========================================== */
+
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
 
 
-    --color-sidebar-foreground: var(--sidebar-foreground);
-    --color-sidebar: var(--sidebar);
+  /* ==========================================
+     Muted
+     ========================================== */
+
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
 
 
+  /* ==========================================
+     Secondary
+     ========================================== */
 
-    --color-chart-5: var(--chart-5);
-    --color-chart-4: var(--chart-4);
-    --color-chart-3: var(--chart-3);
-    --color-chart-2: var(--chart-2);
-    --color-chart-1: var(--chart-1);
-
-
-
-    --color-ring: var(--ring);
-    --color-input: var(--input);
-    --color-border: var(--border);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
 
 
+  /* ==========================================
+     Primary
+     ========================================== */
 
-    --color-destructive: var(--destructive);
-
-
-
-    --color-accent-foreground: var(--accent-foreground);
-    --color-accent: var(--accent);
-
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
 
 
-    --color-muted-foreground: var(--muted-foreground);
-    --color-muted: var(--muted);
+  /* ==========================================
+     Popover
+     ========================================== */
+
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
 
 
+  /* ==========================================
+     Card
+     ========================================== */
 
-    --color-secondary-foreground: var(--secondary-foreground);
-    --color-secondary: var(--secondary);
-
-
-
-    --color-primary-foreground: var(--primary-foreground);
-    --color-primary: var(--primary);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
 
 
+  /* ==========================================
+     Background
+     ========================================== */
 
-    --color-popover-foreground: var(--popover-foreground);
-    --color-popover: var(--popover);
-
-
-
-    --color-card-foreground: var(--card-foreground);
-    --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
 
 
+  /* ==========================================
+     Radius
+     ========================================== */
 
-    --color-foreground: var(--foreground);
-    --color-background: var(--background);
-
-
-
-    --radius-sm: calc(var(--radius) * 0.6);
-    --radius-md: calc(var(--radius) * 0.8);
-    --radius-lg: var(--radius);
-    --radius-xl: calc(var(--radius) * 1.4);
-    --radius-2xl: calc(var(--radius) * 1.8);
-    --radius-3xl: calc(var(--radius) * 2.2);
-    --radius-4xl: calc(var(--radius) * 2.6);
-
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 
-
-
+/* ============================================
+   Base Styles
+   ============================================ */
 
 @layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
 
-    * {
-        @apply border-border outline-ring/50;
-    }
+  html {
+    @apply font-sans;
+
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+
+    /*
+     * Prevent layout shift caused by scrollbar.
+     */
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    /*
+     * Smooth theme transition.
+     */
+    transition:
+      background-color 250ms ease,
+      color 250ms ease;
+
+    /*
+     * Better font rendering.
+     */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /*
+   * Better image behavior.
+   */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /*
+   * Remove tap highlight.
+   */
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
 
 
-    body {
-        @apply bg-background text-foreground;
-    }
+/* ============================================
+   Heading Font
+   ============================================ */
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-space-grotesk), sans-serif;
+  }
+}
 
 
-    html {
-        @apply font-sans;
-    }
+/* ============================================
+   RentNest Glass Navbar
+   ============================================ */
 
+@layer utilities {
+  .glass {
+    background-color: color-mix(
+      in oklch,
+      var(--background) 75%,
+      transparent
+    );
+
+    border-color: color-mix(
+      in oklch,
+      var(--border) 60%,
+      transparent
+    );
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .glass-strong {
+    background-color: color-mix(
+      in oklch,
+      var(--background) 88%,
+      transparent
+    );
+
+    border-color: color-mix(
+      in oklch,
+      var(--border) 70%,
+      transparent
+    );
+
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+}
+
+
+/* ============================================
+   Custom Scrollbar
+   ============================================ */
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) var(--background);
+  }
+}
+
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

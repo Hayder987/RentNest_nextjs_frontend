@@ -21,6 +21,7 @@ import { NavbarProps } from "@/lib/common.type";
 import { logout } from "@/services/logout";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import ThemeToggle from "@/components/theme-toggle";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -70,7 +71,7 @@ const NavBar = ({ userData }: NavbarProps) => {
   };
 
   return (
-    <nav className="fixed top-0 z-50 w-full border-b bg-white shadow-sm">
+    <nav className="fixed top-0 z-50 w-full border-b backdrop-blur-3xl  shadow-sm">
       <div className="mx-auto flex h-20 max-w-400 items-center justify-between px-4 sm:px-6">
         <Link href="/">
           <h1 className="text-2xl font-bold">
@@ -102,6 +103,9 @@ const NavBar = ({ userData }: NavbarProps) => {
               </li>
             ))}
           </ul>
+
+         {/* theme button */}
+         <ThemeToggle/>
           
           {userData?.success && user ? (
             <DropdownMenu>
