@@ -1,43 +1,29 @@
 "use server";
 
-import { LoginState, ValidationError } from "@/lib/auth.types";
-import { loginSchema } from "@/lib/validation/auth.validation";
+import { LoginState } from "@/lib/auth.types";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-export async function LoginUserAction(
+interface IPayload {
+  code: string;
+}
+
+export async function googleLoginAction(
   redirectTo: string,
-  prevState: LoginState,
-  formData: FormData,
+  code: string,
 ): Promise<LoginState> {
-  const payload = {
-    email: String(formData.get("email") ?? ""),
-    password: String(formData.get("password") ?? ""),
+  const payload: IPayload = {
+    code,
   };
 
-  // Frontend Zod Validation
-  const validated = loginSchema.safeParse(payload);
-
-  if (!validated.success) {
-    const errors: ValidationError[] = validated.error.issues.map((issue) => ({
-      field: issue.path[0].toString(),
-      message: issue.message,
-    }));
-
-    return {
-      success: false,
-      statusCode: 400,
-      message: "Validation Error",
-      error: errors,
-    };
-  }
-
-  const res = await fetch(`${process.env.BACKEND_API_URL}/api/auth/login`, {
+  const res = await fetch(`${process.env.BACKEND_API_URL}/api/auth/google`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "X-Requested-With": "XMLHttpRequest",
     },
-    body: JSON.stringify(validated.data),
+    body: JSON.stringify(payload),
+    cache: "no-store",
   });
 
   const result = await res.json();
@@ -45,14 +31,24 @@ export async function LoginUserAction(
   if (!res.ok) {
     return {
       success: false,
-      message: result.message || "Login failed",
+      message: result.message || "Google login failed",
     };
   }
 
   if (result.success) {
+    const accessToken = result.data?.accessToken;
+    const refreshToken = result.data?.refreshToken;
+
+    if (!accessToken || !refreshToken) {
+      return {
+        success: false,
+        message: "Authentication tokens not found",
+      };
+    }
+
     const cookieStore = await cookies();
- 
-    // for development
+
+     // for development
     // cookieStore.set("accessToken", result.data?.accessToken, {
     //   httpOnly: true,
     //   secure: false,
@@ -83,7 +79,8 @@ export async function LoginUserAction(
     });
   }
 
-
+//   Custom redirect
+   
   if (
     redirectTo &&
     typeof redirectTo === "string" &&
@@ -93,13 +90,10 @@ export async function LoginUserAction(
     redirect(redirectTo);
   }
 
-  // after login redirect role base dashboard route
-  if (result?.data?.user.role === "TENANT") {
+//   Google Login is only for TENANT
+
+  if (result?.data?.user?.role === "TENANT") {
     redirect("/tenant-dashboard");
-  } else if (result?.data?.user.role === "LANDLORD") {
-    redirect("/landlord-dashboard");
-  } else if (result?.data?.user.role === "ADMIN") {
-    redirect("/admin-dashboard");
   }
 
   return {

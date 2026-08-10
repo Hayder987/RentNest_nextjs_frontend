@@ -19,6 +19,7 @@ import {
   FieldSeparator,
 } from "@/components/ui/field";
 import { Spinner } from "@/components/ui/spinner";
+import GoogleLoginButton from "./GoogleLoginButton";
 
 const initialState: RegisterState = {
   success: false,
@@ -128,6 +129,7 @@ const RegisterForm = () => {
                   Sign in
                 </Link>
               </FieldDescription>
+              <GoogleLoginButton/>
             </FieldGroup>
           </form>
 

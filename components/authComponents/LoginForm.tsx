@@ -18,6 +18,7 @@ import LoginFields from "./LoginFields";
 import LoginBanner from "./LoginBanner";
 import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
+import GoogleLoginButton from "./GoogleLoginButton";
 
 const initialState: LoginState = {
   success: false,
@@ -143,6 +144,10 @@ const LoginForm = () => {
                   Register Now
                 </Link>
               </FieldDescription>
+
+              {/* <FieldSeparator>Lo </FieldSeparator> */}
+              <GoogleLoginButton/>
+
             </FieldGroup>
           </form>
 
