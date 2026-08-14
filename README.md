@@ -7,10 +7,21 @@
 ## 🌐 Live Demo
 
 ### 🖥️ Frontend
+
 👉 https://rent-nest-nextjs-frontend.vercel.app
 
 ### ⚙️ Backend API
+
 👉 https://rentnest-backend-fui8.onrender.com
+
+---
+
+---
+
+## 📱 Mobile Apps
+
+- 📥 **Direct APK:** [Download RentNest.apk](https://rent-nest-nextjs-frontend.vercel.app/RentNest.apk)
+- ☁️ **Google Drive:** [Download from Drive](https://drive.google.com/file/d/1544aCNwIs5MLCq6wuaZqpWRM71kzCzW7/view?usp=sharing)
 
 ---
 
@@ -18,8 +29,8 @@
 
 > Add your screenshots here.
 
-| Home Page | Dashboard |
-|------------|-----------|
+| Home Page              | Dashboard                   |
+| ---------------------- | --------------------------- |
 | ![](./public/home.png) | ![](./public/dashboard.png) |
 
 ---
@@ -224,11 +235,11 @@ npm run lint
 
 # 🔒 User Roles
 
-| Role | Permissions |
-|------|-------------|
-| 👤 Tenant | Browse properties, Rent, Pay, Review |
-| 🏢 Landlord | Manage properties & rental requests |
-| 🛠️ Admin | Manage users, categories, properties & rentals |
+| Role        | Permissions                                    |
+| ----------- | ---------------------------------------------- |
+| 👤 Tenant   | Browse properties, Rent, Pay, Review           |
+| 🏢 Landlord | Manage properties & rental requests            |
+| 🛠️ Admin    | Manage users, categories, properties & rentals |
 
 ---
 
