@@ -20,7 +20,7 @@
 
 ## 📱 Mobile Apps
 
-- 📥 **Direct APK:** [Download RentNest.apk](https://rent-nest-nextjs-frontend.vercel.app/RentNest.apk)
+- 📥 [<img src="https://img.shields.io/badge/Download-Direct_APK-2EA44F?style=for-the-badge&logo=android&logoColor=white" height="45"/>](https://rent-nest-nextjs-frontend.vercel.app/RentNest.apk)
 - ☁️ **Google Drive:** [Download from Drive](https://drive.google.com/file/d/1544aCNwIs5MLCq6wuaZqpWRM71kzCzW7/view?usp=sharing)
 
 ---
