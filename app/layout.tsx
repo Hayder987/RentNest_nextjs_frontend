@@ -11,6 +11,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Providers from "./providers";
 import ThemeProviders from "@/components/themeProviders";
 import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
+import DownloadAppButton from "@/components/shared/DownloadAppButton";
 
 
 // ============================================
@@ -71,7 +72,7 @@ export default function RootLayout({
               />
 
               {children}
-
+              <DownloadAppButton/>
               <ScrollToTopButton />
             </TooltipProvider>
           </ThemeProviders>
